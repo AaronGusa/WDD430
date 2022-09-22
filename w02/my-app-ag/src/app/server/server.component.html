@@ -1,1 +1,5 @@
-<p>The Server Component Works!</p>
+<p [ngStyle]="{
+    backgroundColor: getColor()
+}"
+[ngClass]="{online: serverStatus === 'online'}">The Servers are {{ serverStatus }}</p>
+

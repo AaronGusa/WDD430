@@ -1,3 +1,20 @@
 <div class="alert alert-success">
 <p>Success-Alert Works!</p>
 </div>
+
+<h2>Enter your username:</h2>
+<input type="text"
+    class="form-control"
+    (input)="onUpdateUserSuccess($event)"
+    [(ngModel)] = 'userName'>
+<br>
+<button
+    class="btn btn-primary"
+    [disabled]="userName === ''"
+    (click)="resetUserInput()"
+>Clear User</button>
+<br>
+
+<label class="alert alert-success">{{ userSuccessInput }}</label>
+
+<hr>
