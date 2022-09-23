@@ -1,12 +1,7 @@
-<div class="row">
-    <div class="col-md-5">
-        <!-- <h2 class="brand">Contacts</h2> -->
-    </div>
-</div>
-<div class="container">
-    <div class="row" >
-        <div class="col-xs-10 contactCardDiv" style="background: rgb(245, 245, 245)"> 
-            <div class="list-group-heading clearfix">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group-heading clearfix contactCardDiv" style="background: rgb(245, 245, 245)">
                 <div class="pull-left">
                     <h2 class="list-group-item-heading">Contacts</h2>
                 </div>
@@ -18,29 +13,21 @@
                 >New Contact
                 </button>
             </div>
-        </div>
-        
-    </div>
-     <div class="row">
-        <div class="col-xs-10 contactCardDiv">
-            <div class="cont">
-                <div class="col-xs-10">
-                    <a href="#" class="list-group-item clearfix" *ngFor="let contact of contacts">
-                        <div class="pull-left">
-                            <h4 class="list-group-item-heading">{{ contact.name }}</h4>
-                            <!-- <p class="list-group-item-text">{{ contact.group }}</p> -->
-                        </div>
-                        <span class="pull-right">
-                            <img src="{{ contact.imagePath }}"
-                            alt="Image of {{ contact.name }}" 
-                            class="img-responsive" 
-                            style="max-height: 50px;">
-                        </span>
-                    </a>
+            <a href="#" class="list-group-item clearfix" *ngFor="let contact of contacts">
+                <div class="pull-left">
+                    <h4 class="list-group-item-heading">{{ contact.name }}</h4>
+                    <!-- <p class="list-group-item-text">{{ contact.group }}</p> -->
                 </div>
-            </div> 
+                <span class="pull-right">
+                    <img src="{{ contact.imageUrl }}"
+                    alt="Image of {{ contact.name }}" 
+                    class="img-responsive" 
+                    style="max-height: 50px;">
+                </span>
+            </a>
         </div>
-    </div> 
+        <div class="col-xs-12">
+            <app-contact-details *ngFor="let contactEl of contacts" [contact]="contactEl"></app-contact-details>
+        </div>    
+    </div>    
 </div>
-
-<!-- <p>contact-list works!</p> -->
