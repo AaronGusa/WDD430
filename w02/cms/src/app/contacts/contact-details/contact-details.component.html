@@ -1,27 +1,29 @@
 <!-- <div class="container-fluid">
     <div class="col-xs-12"> -->
-        <a class="list-group-item clearfix" >
+        <a class="list-group-item clearfix removeMP" >
             <!-- <div class="row">
                 <div class="col-xs-12"> -->
-                    <h2 class="list-group-item-heading">{{ contact.name }}</h2>
+            <div class="detailHead padIt">        
+                    <h2 class="list-group-item-heading ">{{ contact.name }}</h2>
                 <!-- </div>
             </div> -->
-            <div class="row">
-                <div class="col-xs-12 vcenter">
-                    <span class="pull-left">
-                        <img src="{{ contact.imageUrl }}"
-                        alt="Image of {{ contact.name }}" 
-                        class="img-responsive" 
-                        style="max-height: 175px;">
-                    </span>
-                    <div class="btn-group pull-right vcenter">
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                <div class="row">
+                    <div class="list-group-item-heading vcenter">
+                        <span class="pull-left">
+                            <img src="{{ contact.imageUrl }}"
+                            alt="Image of {{ contact.name }}" 
+                            class="img-responsive" 
+                            style="max-height: 175px;">
+                        </span>
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row padIt">
                 <div class="col-xs-12">
                     <p><b>Email: </b>{{ contact.email }}</p>
                     <p><b>Phone: </b>{{ contact.phone }}</p>

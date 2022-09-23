@@ -1,6 +1,20 @@
 .vcenter {
     display:flex ;
+    margin: 0 1rem;
     align-items: center;
     justify-content: space-between;
     float: none;
 }
+
+.detailHead {
+    background-color: rgb(226, 226, 226);
+}
+
+.removeMP {
+    margin: 0;
+    padding: 0;
+}
+
+.padIt {
+    padding: 1rem;
+} 
