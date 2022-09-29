@@ -1,0 +1,53 @@
+<!-- <div class="container-fluid">
+    <div class="row"> -->
+        <!-- <div class="col-md-12" > -->
+            <div class="col-xs-5" id="div1List">
+                <div class="list-group-heading clearfix contactCardDiv" style="background: rgb(245, 245, 245)">
+                    <div class="pull-left">
+                        <h2 class="list-group-item-heading">Contacts</h2>
+                    </div>
+                    <button class="btn 
+                        btn-success 
+                        pull-right
+                        list-group-item-text
+                        pull-right"
+                    >New Contact
+                    </button>
+                </div>
+                <a href="#" class="list-group-item clearfix" *ngFor="let contact of contacts">
+                    <div class="pull-left">
+                        <h4 class="list-group-item-heading">{{ contact.name }}</h4>
+                        <!-- <p class="list-group-item-text">{{ contact.group }}</p> -->
+                    </div>
+                    <span class="pull-right">
+                        <img src="{{ contact.imageUrl }}"
+                        alt="Image of {{ contact.name }}" 
+                        class="img-responsive" 
+                        style="max-height: 75px;">
+                    </span>
+                </a>
+
+            </div>
+            <div class="col-xs-4">
+                <!-- <app-contact-details *ngFor="let contactEl of contacts" [contact]="contactEl"></app-contact-details> For iterating entire contact array-->
+                <app-contact-details [contact]="contacts[0]"></app-contact-details>
+                
+            </div>    
+        <!-- </div> -->
+            <!-- </div>    
+</div> -->
+
+<!-- 
+<a href="#" class="list-group-item clearfix" *ngFor="let contact of contacts">
+                    <div class="pull-left">
+                        <h4 class="list-group-item-heading">{{ contact.name }}</h4>
+                    </div>
+                    <span class="pull-right">
+                        <img src="{{ contact.imageUrl }}"
+                        alt="Image of {{ contact.name }}" 
+                        class="img-responsive" 
+                        style="max-height: 75px;">
+                    </span>
+                </a>
+
+ -->
