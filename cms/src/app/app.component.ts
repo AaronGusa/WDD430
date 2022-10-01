@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cms';
+  selectedFeature: string = 'documents';
+
+  switchView(feature: string) {
+    this.selectedFeature = feature;
+    console.log(this.selectedFeature);
+  }
+
+  // onNavigate(feature: string) {
+  //   this.loadedFeature = feature;
+  //   console.log('On Navagate: ' + feature);
+  // }
 }
