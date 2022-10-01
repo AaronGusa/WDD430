@@ -7,8 +7,8 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
-  @ViewChild('nameInput') nameInputRef: ElementRef; 
-  @ViewChild('amnountInput') amountInputRef: ElementRef; 
+  @ViewChild('nameInput', {static: true}) nameInputRef: ElementRef; 
+  @ViewChild('amountInput', {static: true}) amountInputRef: ElementRef; 
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
 

@@ -9,8 +9,8 @@ import { Messages } from '../model.messages';
 export class MessagesEditComponent implements OnInit {
   currentSender: string = 'Aaron';
   i =-1;
-  @ViewChild('subject') subjectRef: ElementRef;
-  @ViewChild('msgTxt') msgTextRef: ElementRef;
+  @ViewChild('subject', {static: false}) subjectRef: ElementRef;
+  @ViewChild('msgText', {static: false}) msgTextRef: ElementRef;
   @Output() addMessageEvent = new EventEmitter<Messages>();
 
   constructor() { }
