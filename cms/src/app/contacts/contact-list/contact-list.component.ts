@@ -22,7 +22,7 @@ export class ContactListComponent implements OnInit {
 
   onSelected(contact: Contact) {
     this.selectedContactEvent.emit(contact);
-    console.log(contact);
+    // console.log(contact);
     // console.log('onSelected event emitted from contact-list' + contact.name)
   }
 
