@@ -7,7 +7,7 @@ import { BetterHighlightDirective } from './basicDirectives/highlight.directive'
 import { BestHighlightDirective } from './basicDirectives/best-highlight.directive';
 import { CustomBindingDirective } from './basicDirectives/custom-binding.directive';
 import { CustomAliasBindDirective } from './basicDirectives/custom-alias-bind.directive';
-import { UnlessDirectiveDirective } from './structuralDirectives/unless-directive.directive';
+import { UnlessDirective } from './structuralDirectives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { UnlessDirectiveDirective } from './structuralDirectives/unless-directiv
     BestHighlightDirective,
     CustomBindingDirective,
     CustomAliasBindDirective,
-    UnlessDirectiveDirective
+    UnlessDirective
   ],
   imports: [
     BrowserModule

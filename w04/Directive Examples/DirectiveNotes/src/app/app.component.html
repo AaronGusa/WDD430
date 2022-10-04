@@ -18,20 +18,14 @@
            -->
       Custom Alias Binding Directive TS</p>
     </div>
-    <button (click)="templateOn()">True</button>
-    <button (click)="templateOff()">False</button>
-    <div *ngIf="showTemplate">
-      <p>Show my Template</p>
-      <button (click)="showIt()">Show Template</button>
-    </div>
+    <button (click)="templateOnOff()">Press Me</button>
+    <!-- <button (click)="templateOff()">False</button> -->
     <div *appUnless="showTemplate">
-      <ng-template>
-        <div>
-          <h2>This here Header is in appUnless</h2>
-          <img src="../assets/images/switchcase.jpg" alt="Max teaching ngSwitch" style="width: 90%">
+      <h2>This here Header is in appUnless</h2>
+      <p>You have revealed my Template</p>
+      <img src="../assets/images/switchcase.jpg" alt="Max teaching ngSwitch" style="height: 500px">
 
-        </div>
-      </ng-template>
     </div>
+    
   </div>
 </div>
