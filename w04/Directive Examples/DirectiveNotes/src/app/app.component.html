@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-xs-12">
+    <div >
+      <p appBasicHighlight>Basic Highlight with ElemRef</p>
+      <p appBetterHighlight>Better Highlight with Renderer2</p>
+      <p appBestHighlight>Best Highlight with HostBinding</p>
+      <p appCustomBinding
+            [defaultColor]="'yellow'"
+            [highlightColor]="'red'">
+          <!-- property binding to our default and highlight values! -->
+      Custom Binding Directive TS</p>
+      <p [appCustomAliasBind]="'purple'"
+            defaultColor="pink"
+            >
+          <!-- for defaultColor a special case when you are passing down a 
+            string you can add property binding if you don't have square 
+            brackets only if you also omit the single quotes around the value.
+           -->
+      Custom Alias Binding Directive TS</p>
+    </div>
+    <p *ngIf="showTemplate">Show my Template</p>
+    <div *appUnless="showTemplate">
+      <ng-template>
+        <div>
+          <h2>This here Header is in appUnless</h2>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<img src="../assets/images/switchcase.jpg" alt="Max teaching ngSwitch" style="width: 90%">
