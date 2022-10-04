@@ -7,6 +7,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DirectiveNotes';
-  showTemplate = true;
+  showTemplate = false;
+
+
+  // templateOnOff() {
+  //   if (this.showTemplate = true) {
+  //     this.showTemplate = false;
+  //   } else {
+  //     this.showTemplate = true;
+  //   }
+  // }
+
+  showIt() {
+    
+  }
+
+  templateOn() {
+    // if (this.showTemplate = false) {
+      this.showTemplate = true;
+    // } 
+  }
+  templateOff() {
+    this.showTemplate = false
+  }
 
 }
