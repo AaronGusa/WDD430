@@ -1,0 +1,56 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-recipe-book *ngIf="loadedFeature === 'recipe'"></app-recipe-book>
+      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- 
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <h1>I'm working!</h1> 
+      <app-header></app-header>
+      <div class="container" style="background: lightgrey">
+        <h2>Recipe Components</h2>
+        <app-recipe-book></app-recipe-book> 
+        <app-recipe></app-recipe>
+        <app-recipe-detail></app-recipe-detail>
+        
+          <app-recipe-item></app-recipe-item>
+        
+        <div class="cont">
+          <h3>Recipe List Works:</h3>
+        <app-recipe-list></app-recipe-list>
+      </div>
+      </div>
+      <app-header (featureSelected)="onNavigate('other-data')"></app-header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <app-recipe-book></app-recipe-book>
+          </div>
+          
+        </div>
+      </div>
+      <div class="container" style="background: rgb(238, 238, 238)">
+        <h2>Shopping Lists Components</h2>
+        <app-lists *ngIf="loadedFeature === 'recipe'"></app-lists>
+        <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+        
+        <app-ingredients></app-ingredients>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron text-center"><p>Test</p></div> -->
