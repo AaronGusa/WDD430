@@ -18,9 +18,8 @@
                     </button>
                 </div>
                 <app-contact-item 
-                    *ngFor="let contactEl of contacts"
-                    [contact]="contactEl"
-                    (contactSelected)="onSelected(contactEl)"      
+                    *ngFor="let contact of contactList"
+                    [contact]="contact"      
                 ></app-contact-item>
                 
             <!-- </div> -->
