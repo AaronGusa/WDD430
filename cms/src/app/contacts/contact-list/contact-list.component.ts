@@ -16,12 +16,12 @@ export class ContactListComponent implements OnInit {
     this.contactList = this.contactService.getContacts();
   }
 
-  onSelected(contact: Contact) {
-    this.contactService.contactSelectedEvent.emit(contact);
+  // onSelected(contact: Contact) {
+  //   this.contactService.contactSelectedEvent.emit(contact);
     
-    //this.selectedContactEvent.emit(contact);
-    // console.log(contact);
-    // console.log('onSelected event emitted from contact-list' + contact.name)
-  }
+  //   //this.selectedContactEvent.emit(contact);
+  //   // console.log(contact);
+  //   // console.log('onSelected event emitted from contact-list' + contact.name)
+  // }
 
 }

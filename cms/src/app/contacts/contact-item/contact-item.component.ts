@@ -18,7 +18,7 @@ export class ContactItemComponent implements OnInit {
   
   onSelected() {
     this.contacts.contactSelectedEvent.emit(this.contact);
-    console.log('Contact Item Selected Fired');
+    //console.log('Contact Item Selected Fired');
   }
 
 }
