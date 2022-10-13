@@ -21,6 +21,7 @@ export class ListsComponent implements OnInit {
     const ingName = this.nameInputRef.nativeElement.value;
     const ingAmount = this.amountInputRef.nativeElement.value;
     const newIngredient = new Ingredient(ingName, ingAmount);
+    //console.log(newIngredient);
     this.shoppingListService.addIngredient(newIngredient);
   }
 

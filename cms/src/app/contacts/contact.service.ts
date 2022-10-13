@@ -17,18 +17,16 @@ export class ContactService {
     }
 
     getContact(id: string) {
-        for (let contact of this.contacts) {
+        for (let contact of this.contacts.slice()) {
             if (contact.id === id) {
                 return contact;
             } else {
-                return null;
+                console.log();
             } 
         }
     }
 
     contactSelectedEvent = new EventEmitter<Contact>();
-
-    
 
 }
 

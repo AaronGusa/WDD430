@@ -11,7 +11,7 @@ export class AppComponent {
 
   switchView(feature: string) {
     this.selectedFeature = feature;
-    console.log(this.selectedFeature);
+    //console.log(this.selectedFeature);
   }
 
   // onNavigate(feature: string) {

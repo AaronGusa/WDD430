@@ -28,7 +28,7 @@ export class ShoppingListService {
         //     this.addIngredient(ingredient);
         // }
 
-        //Option 2 - ES6 Feature "spread" donw with "..." turn an array into a list
+        //Option 2 - ES6 Feature "spread" done with "..." turn an array into a list
         this.ingredients.push(...ingredients);
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
