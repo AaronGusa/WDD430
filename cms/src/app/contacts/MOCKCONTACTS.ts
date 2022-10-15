@@ -119,6 +119,15 @@ export const MOCKCONTACTS: Contact[] = [
     imageUrl: '../../assets/images/thompsonda.jpg',
     group: null
   },
+  // index 12.1
+  {
+    id: '88',
+    name: 'Aaron Gusa',
+    email: 'gus2102@byui.edu',
+    phone: '801-879-4011',
+    imageUrl: 'https://static.wixstatic.com/media/f729b5_b6a7f7b0b24c4399b94117b6ebb059ca~mv2.png/v1/crop/x_864,y_0,w_2967,h_3393/fill/w_481,h_550,al_c,q_85,usm_0.33_1.00_0.00,enc_auto/IMG_9116-AAE-24_69M.png',
+    group: null
+  },
 
   // teams
   // index 13

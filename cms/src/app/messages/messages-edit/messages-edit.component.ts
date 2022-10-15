@@ -8,7 +8,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./messages-edit.component.css']
 })
 export class MessagesEditComponent implements OnInit {
-  currentSender: string = '7';
+  currentSender: string = '88';
   i =-1;
   @ViewChild('subject', {static: false}) subjectRef: ElementRef;
   @ViewChild('msgText', {static: false}) msgTextRef: ElementRef;
@@ -25,7 +25,7 @@ export class MessagesEditComponent implements OnInit {
     const subject = this.subjectRef.nativeElement.value;
     const msgTxt = this.msgTextRef.nativeElement.value;
     const newMessage = new Messages(this.i, subject, msgTxt, this.currentSender);
-    console.log(newMessage);
+    //console.log(newMessage);
 
     this.messageService.addMessage(newMessage);
     //this.messageSer Type 'Messages' is missing the following provice.addMessage(newMessage);
