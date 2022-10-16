@@ -17,7 +17,7 @@ export class DocumentService {
   }
 
   getDocument(id: number) {
-    for (let document of this.documents) {
+    for (let document of this.documents.slice()) {
       if (document.id === id) {
         return document;
       } else {

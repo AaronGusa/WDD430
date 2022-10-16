@@ -18,7 +18,7 @@ export class MessageService {
   }
 
   getMessage(id: number) {
-    for (let message of this.messages) {
+    for (let message of this.messages.slice()) {
       if (message.id === id) {
         return message;
       } else {
