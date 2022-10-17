@@ -15,7 +15,9 @@ import { Routes, RouterModule } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, //localhost:4200/
   { path: 'users', component: UsersComponent }, //localhost:4200/users
-  { path: 'servers', component: ServersComponent } //localhost:4200/servers
+  { path: 'users/:id/:name', component: UserComponent }, //localhost:4200/users
+  { path: 'servers', component: ServersComponent }, //localhost:4200/servers
+  { path: 'servers/:id/edit', component: EditServerComponent } //localhost:4200/servers
 
 ];
 // Pathing is required to follow the above syntax. Ensure that the string in the path does no include the / because it will result in a double /. 
