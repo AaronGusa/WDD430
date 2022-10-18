@@ -20,17 +20,20 @@ const appRoutes: Routes = [
     { path: ':id/edit', component: EditServerComponent } //localhost:4200/servers/id and edit
     //children routes need a separate outlet because they cannot overwrite the servers component
     //they should be loaded nested into the server component. See the servers html
-  ]
-
+    ]
   }, //localhost:4200/servers
+  
   //Initial pathing for users
     //{ path: 'users', component: UsersComponent }, //localhost:4200/users
     //{ path: 'users/:id/:name', component: UserComponent }, //localhost:4200/users
   //Child pathing for users
   { path: 'users', component: UsersComponent, children: [
     { path: ':id/:name', component: UserComponent } //localhost:4200/users
+    ] 
+  }, //localhost:4200/users
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' } //** is the wildcard route. Must be the last in the array becuase of top-bottom parsing.
 
-  ] } //localhost:4200/users
 
 ];
 // Pathing is required to follow the above syntax. Ensure that the string in the path does no include the / because it will result in a double /. 
