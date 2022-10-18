@@ -9,7 +9,8 @@ import { Subscription } from 'rxjs';
 })
 export class UserComponent implements OnInit, OnDestroy {
   user: {id: number, name: string};
-  paramsSubscription: Subscription
+  paramsSubscription: Subscription;
+  
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
