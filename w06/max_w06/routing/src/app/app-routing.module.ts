@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactive-guard.service';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { UserComponent } from './users/user/user.component';
@@ -18,7 +20,7 @@ const appRoutes: Routes = [
     canActivateChild:[AuthGuard], 
     component: ServersComponent, 
     children: [
-      { path: ':id', component: ServerComponent }, //localhost:4200/servers/(server id number)
+      { path: ':id', component: ServerComponent, resolve: {server: ServerResolver} }, //localhost:4200/servers/(server id number)
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] } //localhost:4200/servers/id and edit
     ]
   }, //localhost:4200/servers
@@ -26,11 +28,13 @@ const appRoutes: Routes = [
     { path: ':id/:name', component: UserComponent } //localhost:4200/users
     ] 
   }, //localhost:4200/users
-  { path: 'not-found', component: PageNotFoundComponent },
+  //{ path: 'not-found', component: PageNotFoundComponent },
+  { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   { path: '**', redirectTo: '/not-found' } //** is the wildcard route. Must be the last in the array becuase of top-bottom parsing.
 ];
 
 @NgModule({
+  // imports: [RouterModule.forRoot(appRoutes, {useHash: true})], //Hash mode for server compatability
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
