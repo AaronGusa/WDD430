@@ -3,10 +3,13 @@
         <app-document-list></app-document-list>
     </div>
   
-  <div class="col-md-4">
-        <app-document-detail
-            *ngIf="selectedDocument"
-            [document]="selectedDocument"
-        ></app-document-detail>
-  </div>
-  </div>
+    <div class="col-md-4">
+            <router-outlet
+                routerLinkActive="active"
+                *ngIf="selectedDocument"
+                [document]="selectedDocument"
+                
+            ></router-outlet>
+            <router-outlet></router-outlet>
+    </div>
+</div>

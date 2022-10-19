@@ -16,11 +16,12 @@ export class DocumentService {
     return this.documents.slice();
   }
 
-  getDocument(id: number) {
+  getDocument(id: string) {
     for (let document of this.documents.slice()) {
       if (document.id === id) {
         return document;
       } else {
+        console.log('Why isnt this working')
         return null;
       }
     }

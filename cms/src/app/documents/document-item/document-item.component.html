@@ -1,6 +1,7 @@
 <a class="list-group-item clearfix documentDiv"
-(click)="onSelectedDocument()" >
+  routerLink="{{ document.id }}"
+  routerLinkActive="active" >
     <!-- Display document name here -->
     <h1>{{ document.name }}</h1>
-  </a>
+</a>
   
