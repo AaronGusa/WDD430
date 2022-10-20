@@ -6,10 +6,12 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
   providedIn: 'root'
 })
 export class DocumentService {
-  documents: Document[] = [];
+  documents: Document[];
+  //documentSliced: any;
   
   constructor() { 
     this.documents = MOCKDOCUMENTS;
+    //this.documentSliced = this.documents.slice();
   }
 
   getDocuments() {
@@ -18,15 +20,28 @@ export class DocumentService {
 
   getDocument(id: string) {
     for (let document of this.documents.slice()) {
+      //console.log(document);
       if (document.id === id) {
+        //console.log('Doc ID: ' + id);
         return document;
-      } else {
-        console.log('Why isnt this working')
-        return null;
-      }
+      }; 
+    };
+  }
+
+  deleteDocument(document: Document) {
+    if (!document) {
+       return;
     }
+    const pos = this.documents.indexOf(document);
+    if (pos < 0) {
+       return;
+    }
+    this.documents.splice(pos, 1);
+    this.documentChangedEvent.emit(this.documents.slice());
   }
   
   documentSelectedEvent = new EventEmitter<Document>();
+  documentChangedEvent = new EventEmitter<Document[]>();
+
 
 }
