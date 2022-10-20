@@ -5,7 +5,6 @@ import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.compo
 import { ContactsComponent } from "./contacts/contacts.component";
 import { DocumentDetailComponent } from "./documents/document-detail/document-detail.component";
 import { DocumentEditComponent } from "./documents/document-edit/document-edit.component";
-import { DocumentListComponent } from "./documents/document-list/document-list.component";
 import { DocumentsComponent } from "./documents/documents.component";
 import { MessagesComponent } from "./messages/messages.component";
 
