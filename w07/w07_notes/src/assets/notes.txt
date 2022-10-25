@@ -1,0 +1,26 @@
+What is an Observable:
+    A data source. User inputs, http requests, code triggers, etc.
+    As a publisher, you create an Observable instance that defines a subscriber function. This is the function that is executed when a consumer calls the subscribe() method. The subscriber function defines how to obtain or generate values or messages to be published.
+
+To execute the observable you have created and begin receiving notifications, you call its subscribe() method,
+passing an observer. This is a JavaScript object that defines the handlers for the notifications you receive. 
+The subscribe() call returns a Subscription object that has an unsubscribe() method, which you call to stop 
+receiving notifications. 
+link: https://angular.io/guide/observables
+yt: https://www.youtube.com/watch?v=V4iMyVnQPqM
+
+asynchronous: You don't know when they'll happen, or how long they'll take!
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+For Max's tutorial: 
+In order to follow along smoothly with the course examples, make sure you install RxJS v6 by running
+
+npm install --save rxjs@6
+
+In addition, also install the rxjs-compat package:
+
+npm install --save rxjs-compat
+
+
+
