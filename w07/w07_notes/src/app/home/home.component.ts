@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Required for this observable we need features from rjxs
 import { interval, Subscription, Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators'
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   // STEP 2
   // To avoid memory leaks we can:
   private firstObsSubscription: Subscription;
-  private customIntervalObservable
 
 
   constructor() { }
@@ -57,7 +57,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       let count = 0;
       setInterval( () => {
         observer.next(count);
-        
+        if (count === 6) {
+          observer.complete(); //Errors destroy the subsciption but Complete finishes it!
+        }
         if (count > 3) {
           observer.error(new Error('Count is greater than 3!')) // Our own fabricated error
         };
@@ -65,11 +67,24 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 1000);
     });
 
-    this.firstObsSubscription = customIntervalObservable.subscribe(data => {
+    
+
+    //Handler functions with our subscription
+    //Operators are important to change our output if we do not have access with pipe()
+    //pipe can recieve unlimited arguments like below with filter() and map()
+    //This way we can transform our data to our liking
+
+    this.firstObsSubscription = customIntervalObservable.pipe(filter(data => {
+      return data > 0;
+    }), map( (data: number) => {
+      return 'Round: ' + (data + 1);
+    })).subscribe(data => {
       console.log(data);
     }, error => { // fat arrow function to handle our error. No longer red in console and window alerts user.
       console.log(error);
       alert(error.message);
+    }, () => {
+      console.log('Completed!');
     });
 
   }
