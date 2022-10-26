@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 
@@ -7,11 +8,18 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 })
 export class DocumentService {
   documents: Document[];
-  //documentSliced: any;
+  //documentListChangedEvent = new Subject<Document[]>();
+  documentSelectedEvent = new Subject<Document>();
+  documentChangedEvent = new Subject<Document[]>();
+
+  maxId: number;
+  currentId: number;
+  maxDocumentId: number;
+  documentListClone: Document[];
   
   constructor() { 
     this.documents = MOCKDOCUMENTS;
-    //this.documentSliced = this.documents.slice();
+    this.maxDocumentId = this.getMaxId();
   }
 
   getDocuments() {
@@ -28,6 +36,33 @@ export class DocumentService {
     };
   }
 
+  addDocument(newDocument: Document) {
+    if (!newDocument) {
+      return;
+    }
+    this.maxDocumentId++;
+    newDocument.id = this.maxDocumentId.toString();
+    this.documents.push(newDocument);
+    this.documentListClone = this.documents.slice();
+
+    this.documentChangedEvent.next(this.documentListClone);
+  }
+
+  updateDocument(originalDocument: Document, newDocument: Document) {
+    if (!originalDocument || !newDocument) {
+      return;
+    };
+    const pos = this.documents.indexOf(originalDocument);
+    if (pos < 0) {
+      return;
+    };
+    newDocument.id = originalDocument.id;
+    document[pos] = newDocument;
+    this.documentListClone = this.documents.slice();
+    this.documentChangedEvent.next(this.documentListClone);
+  }
+
+
   deleteDocument(document: Document) {
     if (!document) {
        return;
@@ -37,11 +72,21 @@ export class DocumentService {
        return;
     }
     this.documents.splice(pos, 1);
-    this.documentChangedEvent.emit(this.documents.slice());
+    this.documentChangedEvent.next(this.documents.slice());
   }
   
-  documentSelectedEvent = new EventEmitter<Document>();
-  documentChangedEvent = new EventEmitter<Document[]>();
+  getMaxId(): number {
 
+    this.maxId = 0; 
 
+    for (let document of this.documents) {
+        this.currentId = +document.id;
+        if (this.currentId > this.maxId) {
+            this.maxId = this.currentId};
+    //endIf
+    //endFor
+
+    return this.maxId;
+  }
+  }
 }
