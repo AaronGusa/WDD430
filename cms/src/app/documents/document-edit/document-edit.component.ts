@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-edit.component.css']
 })
 export class DocumentEditComponent implements OnInit {
-  originalDocument: any;
+  originalDocument: Document;
   document: Document;
   editMode: boolean = false;
   id: string;
@@ -32,9 +33,9 @@ export class DocumentEditComponent implements OnInit {
         if(params['id']) {
           this.id = params['id'];
           if (this.id === null || undefined || params === params['new']) {
-            console.log(3);
+           // console.log(3);
             this.editMode= false;
-            console.log('ID was Null or Undefined. Error 1 Line 26 Doc-edit.component')
+            //console.log('ID was Null or Undefined. Error 1 Line 26 Doc-edit.component')
             return;
           } else {
             this.originalDocument = this.docService.getDocument(this.id);
@@ -46,13 +47,16 @@ export class DocumentEditComponent implements OnInit {
               
               this.document = JSON.parse(JSON.stringify(this.originalDocument));
               //Console Confirmation
-              console.log('ID was Found. Generated from Line 36 Doc-edit.component')
-              console.log(`Document ID: (${this.id}) Object Returned:`);
-              console.log(this.document);
+              //console.log('ID was Found. Generated from Line 36 Doc-edit.component')
+              //console.log(`Document ID: (${this.id}) Object Returned:`);
+              //console.log(`This document's name is ${this.document.name}`);
+              //console.log(this.document);
               
               return this.document;
             }
           }
+        } else {
+          return;
         }
       }
     )
@@ -64,7 +68,7 @@ export class DocumentEditComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(`Submitted!!!`);
+    //console.log(`Submitted!!!`);
     // submittedId = this.currentParam;
 
     this.submittedDoc.name = f.value.name;
@@ -72,13 +76,13 @@ export class DocumentEditComponent implements OnInit {
     this.submittedDoc.url = f.value.url;
     
     
-    console.log(this.submittedDoc);
+    //console.log(this.submittedDoc);
 
     if (this.editMode) {
       this.submittedDoc.id = this.id;
+      //console.log(this.submittedDoc);
       this.docService.updateDocument(this.originalDocument, this.submittedDoc);
       // this.router.navigate(['./documents']);
-      return;
     } else {
       this.docService.addDocument(this.submittedDoc);
       this.router.navigate(['./documents']);

@@ -18,9 +18,11 @@
             name="name"
             size="120"
             max="120"
-            ngModel
+            ngModel 
+            [ngModel]="document?.name"
             required
-            #name="ngModel">
+            #name="ngModel"
+            >
         </div>
       </div>
 
@@ -51,6 +53,7 @@
             size="150"
             max="255"
             ngModel
+            [ngModel]="document?.url"
             required
             #url="ngModel">
         </div>
