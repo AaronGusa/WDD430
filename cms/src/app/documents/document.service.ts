@@ -8,6 +8,7 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 })
 export class DocumentService {
   documents: Document[];
+  document: Document;
   //documentListChangedEvent = new Subject<Document[]>();
   documentSelectedEvent = new Subject<Document>();
   documentChangedEvent = new Subject<Document[]>();
@@ -27,11 +28,11 @@ export class DocumentService {
   }
 
   getDocument(id: string) {
-    for (let document of this.documents.slice()) {
+    for (this.document of this.documents.slice()) {
       //console.log(document);
-      if (document.id === id) {
+      if (this.document.id === id) {
         //console.log('Doc ID: ' + id);
-        return document;
+        return this.document;
       }; 
     };
   }
@@ -60,6 +61,7 @@ export class DocumentService {
     document[pos] = newDocument;
     this.documentListClone = this.documents.slice();
     this.documentChangedEvent.next(this.documentListClone);
+    return;
   }
 
 
