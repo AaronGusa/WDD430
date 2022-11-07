@@ -10,6 +10,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactDetailsComponent implements OnInit {
   contact: Contact;
+  contactGroupLength: any;
   id: string;
   
 
@@ -22,6 +23,16 @@ export class ContactDetailsComponent implements OnInit {
       (params: Params) => {
         this.id = params['id'];
         this.contact = this.contactService.getContact(this.id);
+        
+        if (this.contact.group !== null || undefined ) {
+          if(this.contact.group.length > 0) {
+          this.contactGroupLength = this.contact.group.length;
+          //console.log(this.contactGroupLength);
+          };
+        } else {
+          this.contactGroupLength = null;
+          //console.log('null or undefined group length');
+        }
       }
     )
   }

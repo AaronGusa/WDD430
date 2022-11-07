@@ -1,11 +1,32 @@
 
+input {
+  border-radius: 15px;
+}
+
 .required.ng-invalid {
   border: 1px solid red;
 }
 
 .invalid.ng-invalid.ng-dirty {
   border: 1px solid red;
+  background-color: rgba(179, 74, 74, 0.25);
+  
 }
+
+input.ng-valid.ng-touched {
+  border-right: 5px solid green;
+  border-bottom: 2px solid green;
+  background-color: rgba(144, 238, 144, 0.25);
+
+}
+
+input.ng-dirty.ng-valid.ng-touched {
+  border-right: 5px solid green;
+  border-bottom: 2px solid green;
+  background-color: rgba(144, 238, 144, 0.25);
+
+}
+
 
 .pad-left-right{
   padding-left:.1rem;

@@ -57,13 +57,7 @@
             #url="ngModel">
         </div>
       </div>
-      <div class="alert alert-danger" *ngIf="!name.valid && name.touched && !url.touched">
-          <p>The Document Title is required.</p>
-      </div>
-      <div class="alert alert-danger" *ngIf="!url.valid && url.touched && !name.touched">
-        <p>The Document URL is required.</p>
-    </div>
-    <div class="alert alert-danger" *ngIf="!name.valid && name.touched && !url.valid && url.touched">
+    <div class="alert alert-danger" *ngIf="!name.valid && name.touched || !url.valid && url.touched">
       <p>The Document Title and Document URL are required.</p>
     </div>
 

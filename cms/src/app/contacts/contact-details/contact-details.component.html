@@ -27,7 +27,26 @@
                 <div class="col-xs-12">
                     <p><b>Email: </b>{{ contact.email }}</p>
                     <p><b>Phone: </b>{{ contact.phone }}</p>
-                    <!-- <p><b>Group: </b>{{ group }}</p> -->
+                    <div *ngIf="contactGroupLength > 0">
+                        <hr>
+                        <p><b>Contacts in Team: </b></p>
+                    </div>
+                </div>
+                <div class="col-xs-12" *ngFor="let c of contact.group">
+                    <div class="row">
+                        <div class="padIt">        
+                            <h2 class="list-group-item-heading vcenter pull-left">{{ c.name }}</h2>
+                            <div class="list-group-item-heading pull-right">
+                                <span class="pull-right">
+                                    <img src="{{ c.imageUrl }}"
+                                    alt="Image of {{ c.name }}" 
+                                    class="img-responsive" 
+                                    style="max-height: 75px;">
+                                </span>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </a>

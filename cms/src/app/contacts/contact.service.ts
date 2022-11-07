@@ -41,22 +41,31 @@ export class ContactService {
         if(!newContact) {
             return;
         }
-        this.maxContactId++;
-        newContact.id = this.maxContactId.toString();
+        newContact.id = this.totalContacts();
         this.contacts.push(newContact);
         this.contactListClone = this.contacts.slice();
 
         this.contactChangedEvent.next(this.contactListClone);
+        console.log('Added New Contact')
+        return this.contactListClone;
     }
 
     updateContact(originalContact: Contact, newContact: Contact) {
         if (!originalContact || !newContact) {
             return;
-        }
+        };
         const pos = this.contacts.indexOf(originalContact);
-        newContact[pos] = newContact;
+        if(pos < 0) {
+            return;
+        }
+        newContact.id = originalContact.id;
+        this.contacts[pos] = newContact;
         this.contactListClone = this.contacts.slice();
         this.contactChangedEvent.next(this.contactListClone);
+        //console.log(`Updated ${newContact.name}'s Contact`);
+        //console.log(`Updated ${newContact.imageUrl}'s Contact`)
+
+
     }
 
     deleteContact(contact: Contact) {
@@ -86,6 +95,12 @@ export class ContactService {
       }
       }
 
+    totalContacts() {
+        let total: number = this.contacts.length;
+        total = total++;
+        let totalString = total.toString();        
+        return totalString;
+    }
     
 }
 
