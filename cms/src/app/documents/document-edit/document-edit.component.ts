@@ -82,7 +82,7 @@ export class DocumentEditComponent implements OnInit {
       this.submittedDoc.id = this.id;
       //console.log(this.submittedDoc);
       this.docService.updateDocument(this.originalDocument, this.submittedDoc);
-      // this.router.navigate(['./documents']);
+      this.router.navigate(['./documents']);
     } else {
       this.docService.addDocument(this.submittedDoc);
       this.router.navigate(['./documents']);
