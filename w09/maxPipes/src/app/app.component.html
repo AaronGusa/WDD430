@@ -1,18 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="well">
+        <label for="status" class="container-fluid">Enter Status:</label>
+        <input type="text" [(ngModel)]="filteredStatus" name="status">
+      </div>
+      <hr>
+      <div class="row">
+        <button class="btn btn-primary"
+          (click)="onAddServer()"
+        >Add Server</button>
+      </div>
+      <h2 class="well">App Status: {{ appStatus | async | uppercase }} </h2>
+      <hr>
+      <div class="row" style="margin-top: 1rem;">
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers"
+          *ngFor="let server of servers | filter:filteredStatus:'status'"
           [ngClass]="getStatusClasses(server)">
           <span
             class="badge">
             {{ server.status }}
           </span>
-          <strong>{{ server.name }}</strong> | {{ server.instanceType }} | {{ server.started }}
+          <strong>{{ server.name | shortenPipe: 15 }}</strong> | 
+            {{ server.instanceType | uppercase }} | 
+            {{ server.started | date:'fullDate' | uppercase }} 
+            <!-- parameterizing a pipe requires a ':' followed by a string.
+              To add multiple param to a pipe add another ':' after each param.
+              Chained pipes read left to right, order matters-->
         </li>
       </ul>
+    </div>
     </div>
   </div>
 </div>
