@@ -1,5 +1,5 @@
 import { Contact } from "./contact.model";
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, OnInit } from '@angular/core';
 import { MOCKCONTACTS } from "./MOCKCONTACTS";
 import { map, Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
     providedIn: 'root'
 })
 
-export class ContactService {
-    contacts: Contact[];
+export class ContactService implements OnInit {
+    contacts: Contact[] = [];
     contactSelectedEvent = new Subject<Contact>();
     contactChangedEvent = new Subject<Contact[]>();
 
@@ -27,6 +27,13 @@ export class ContactService {
         //this.maxContactId = this.getMaxId();
     }
 
+    ngOnInit(){
+        console.log('Contacts OnInit')
+        console.log(this.contacts);
+        this.fetchContacts();
+        console.log(this.contacts);
+    }
+
     setContacts(contacts: Contact[]) {
         this.contacts = contacts;
         //console.log(contacts);
@@ -38,11 +45,13 @@ export class ContactService {
     }
 
     getContact(id: string) {
-        for (let contact of this.contacts.slice()) {
+        //console.log('Get Contacts');
+        //console.log(this.contacts);
+        for (let contact of this.contacts) {
             if (contact.id === id) {
                 return contact;
             } else {
-                console.log();
+                //console.log('Not Found');
             } 
         }
     }
@@ -144,8 +153,9 @@ export class ContactService {
         //     this.contacts = array;
         // }        ))
         .subscribe((contacts: Contact[]) => {
-            this.setContacts(contacts);
-            this.getSorted();
+            this.contacts = contacts;
+            //this.setContacts(contacts);
+            //this.getSorted();
             this.contactChangedEvent.next(this.contacts.slice());
         }
         )
@@ -165,7 +175,7 @@ export class ContactService {
             {
                 // console.log('Response');
                 // console.log(response)
-            this.getSorted();
+            //this.getSorted();
             this.contactChangedEvent.next(this.contacts.slice())}
         )
     }

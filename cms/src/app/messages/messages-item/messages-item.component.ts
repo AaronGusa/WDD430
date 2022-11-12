@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/contacts/contact.model';
 import { ContactService } from 'src/app/contacts/contact.service';
 import { Messages } from '../message.model';
@@ -10,17 +11,18 @@ import { Messages } from '../message.model';
 })
 export class MessagesItemComponent implements OnInit {
   @Input() message: Messages;
-  messageSender: string;
+  messageSender: string = '';
 
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService) {}
 
   ngOnInit() {
     //console.log(this.message);
     const contact: Contact = this.contactService.getContact(this.message.sender);
-    //console.log('This is the contact:' + contact);
+    //console.log('This is the contact:' + contact.name);
     //console.log('This is the message sender number: ' + this.message.sender)
     this.messageSender = contact.name;
+    //console.log(contact.name);
   }
 
 
