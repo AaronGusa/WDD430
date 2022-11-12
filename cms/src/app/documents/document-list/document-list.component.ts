@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 
@@ -12,6 +12,8 @@ export class DocumentListComponent implements OnInit, OnDestroy {
   
   documents: Document[];
   private docListChange: Subscription;
+  error: any;
+  isError: boolean = false;
 
   constructor(private documentService: DocumentService) {}
 
@@ -21,6 +23,12 @@ export class DocumentListComponent implements OnInit, OnDestroy {
       .subscribe( (documentsList: Document[]) => {
         this.documents = documentsList;
       });
+    
+    this.error = this.documentService.errorHasChanged
+      .subscribe( newError => {
+        this.error = newError;
+        this.isError = this.documentService.errorFound();
+      })
     //Old code for reference
     // this.documents = this.documentService.getDocuments();
     // this.documentService.documentChangedEvent.subscribe(
@@ -29,6 +37,7 @@ export class DocumentListComponent implements OnInit, OnDestroy {
     //   }
     // )
   }
+
 
   ngOnDestroy() {
     this.docListChange.unsubscribe();

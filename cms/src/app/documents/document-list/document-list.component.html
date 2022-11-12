@@ -11,6 +11,11 @@
         *ngFor="let document of documents"
         [document]="document"
         ></app-document-item>
+      <div class="alert alert-danger" *ngIf="isError">
+        <h2>Error</h2>
+        <p>{{ error }}</p>
+      </div>
+      
     </div>
   </div>
 </div>

@@ -2,13 +2,21 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocumentService {
-  documents: Document[];
+  documents: any = [];
   document: Document;
+  
+  //Error Handling
+  error: any;
+  errorHasChanged = new Subject<string>();
+  isError: boolean = false
+
   //documentListChangedEvent = new Subject<Document[]>();
   documentSelectedEvent = new Subject<Document>();
   documentChangedEvent = new Subject<Document[]>();
@@ -17,11 +25,20 @@ export class DocumentService {
   currentId: number;
   maxDocumentId: number;
   documentListClone: Document[];
+
   
-  constructor() { 
-    this.documents = MOCKDOCUMENTS;
-    this.maxDocumentId = this.getMaxId();
+  constructor(private http: HttpClient) { 
+    //this.documents = MOCKDOCUMENTS;
+    this.fetchDocuments();
+    //this.maxDocumentId = this.getMaxId();
   }
+
+  setDocuments(documents: Document[]) {
+    this.documents = documents;
+    
+    this.documentChangedEvent.next(this.documents.slice());
+  }
+    
 
   getDocuments() {
     return this.documents.slice();
@@ -43,10 +60,20 @@ export class DocumentService {
     }
     this.maxDocumentId++;
     newDocument.id = this.maxDocumentId.toString();
+    
+    
+    
+    
+    
+    
     this.documents.push(newDocument);
-    this.documentListClone = this.documents.slice();
+    console.log(this.documents);
+    //this.documentListClone = this.documents.slice();
+    this.getSorted();
 
-    this.documentChangedEvent.next(this.documentListClone);
+    this.storeDocuments();
+
+    //this.documentChangedEvent.next(this.documentListClone);
   }
 
   updateDocument(originalDocument: Document, newDocument: Document) {
@@ -59,8 +86,10 @@ export class DocumentService {
     };
     newDocument.id = originalDocument.id;
     this.documents[pos] = newDocument;
-    this.documentListClone = this.documents.slice();
-    this.documentChangedEvent.next(this.documentListClone);
+    //this.documentListClone = this.documents.slice();
+    this.getSorted();
+    this.storeDocuments();
+    //this.documentChangedEvent.next(this.documentListClone);
   }
 
 
@@ -73,7 +102,8 @@ export class DocumentService {
        return;
     }
     this.documents.splice(pos, 1);
-    this.documentChangedEvent.next(this.documents.slice());
+    //this.documentChangedEvent.next(this.documents.slice());
+    this.storeDocuments();
   }
   
   getMaxId(): number {
@@ -86,8 +116,77 @@ export class DocumentService {
             this.maxId = this.currentId};
     //endIf
     //endFor
-
+    }
     return this.maxId;
   }
+
+  getSorted() {
+    this.documents.sort((a,b) => {
+      a = a.name,
+      b = b.name;
+      return a == b ? 0 : a > b ? 1 : -1; 
+    });
+
+    this.documentChangedEvent.next(this.documents.slice());
   }
+
+  fetchDocuments() {
+    this.http
+      .get('https://cmstestproject-4aa23-default-rtdb.firebaseio.com/documents.json')
+      .subscribe((documents: Document[]) => {
+        //console.log(documents);
+
+        this.setDocuments(documents);
+        this.maxDocumentId = this.getMaxId();
+        this.isError = false;
+        this.documents.sort((a,b) => {
+          a = a.name,
+          b = b.name;
+          return a == b ? 0 : a > b ? 1 : -1; 
+        });
+
+        this.documentChangedEvent.next(this.documents.slice());
+
+        //console.log(this.documents)
+        //console.log(this.documents[0]); 
+        }, error => {
+          //console.log(error);
+          this.isError = true;
+          this.error = error;
+          this.errorHasChanged.next(`Error ${error.status}: ${error.statusText} ${error.error.error}`);
+
+          //console.log(this.error);
+        });
+    //console.log(this.documents.slice());
+  }
+
+  errorFound() {
+    if (this.isError) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  storeDocuments() {
+    const putStringed = JSON.stringify(this.documents);
+    this.http
+      .put('https://cmstestproject-4aa23-default-rtdb.firebaseio.com/documents.json',
+      putStringed, {
+        headers: new HttpHeaders( {'Content-Type': 'application/json'})
+      })
+      .subscribe(responseData => 
+        { 
+          console.log('Response')
+          console.log(responseData);
+          this.documentChangedEvent.next(this.documents.slice());
+      }, error => {
+        //Error Handling Option 2:
+      this.error.next(`Error ${error.status}: ${error.statusText} ${error.error.error}`);
+      console.log(error);
+      }); // We can include the subscribe here in the service because it doesn't care about the 
+      // response.  
+    
+  }
+  
 }

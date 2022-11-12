@@ -1,7 +1,8 @@
 import { Contact } from "./contact.model";
 import { Injectable, EventEmitter } from '@angular/core';
 import { MOCKCONTACTS } from "./MOCKCONTACTS";
-import { Subject } from "rxjs";
+import { map, Subject } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -18,9 +19,18 @@ export class ContactService {
     contactListClone: Contact[];
 
 
-    constructor() {
-        this.contacts = MOCKCONTACTS;
-        this.maxContactId = this.getMaxId();
+    constructor(
+        private http: HttpClient
+    ) {
+        this.fetchContacts();
+        //this.contacts = MOCKCONTACTS;
+        //this.maxContactId = this.getMaxId();
+    }
+
+    setContacts(contacts: Contact[]) {
+        this.contacts = contacts;
+        //console.log(contacts);
+
     }
 
     getContacts() {
@@ -43,11 +53,15 @@ export class ContactService {
         }
         newContact.id = this.totalContacts();
         this.contacts.push(newContact);
-        this.contactListClone = this.contacts.slice();
+        
+        
+        this.storeContacts();
+        
+        //this.contactListClone = this.contacts.slice();
 
-        this.contactChangedEvent.next(this.contactListClone);
-        console.log('Added New Contact')
-        return this.contactListClone;
+        // this.contactChangedEvent.next(this.contactListClone);
+        // console.log('Added New Contact')
+        // return this.contactListClone;
     }
 
     updateContact(originalContact: Contact, newContact: Contact) {
@@ -64,7 +78,7 @@ export class ContactService {
         this.contactChangedEvent.next(this.contactListClone);
         //console.log(`Updated ${newContact.name}'s Contact`);
         //console.log(`Updated ${newContact.imageUrl}'s Contact`)
-
+        this.storeContacts();
 
     }
 
@@ -77,7 +91,8 @@ export class ContactService {
             return;
         }
         this.contacts.splice(pos, 1);
-        this.contactChangedEvent.next(this.contacts.slice());
+        //this.contactChangedEvent.next(this.contacts.slice());
+        this.storeContacts();
     }
 
     getMaxId(): number {
@@ -97,10 +112,65 @@ export class ContactService {
 
     totalContacts() {
         let total: number = this.contacts.length;
-        total = total++;
+        //console.log(total);
+        
+        total = total + 1;
+
+        //console.log(`After adding 1: ${total}`);
         let totalString = total.toString();        
         return totalString;
     }
+
+    getSorted() {
+        this.contacts.sort((a: any, b: any) => {
+          a = a.name,
+          b = b.name;
+          return a == b ? 0 : a > b ? 1 : -1; 
+        });
+    
+        this.contactChangedEvent.next(this.contacts.slice());
+      }
+
+    fetchContacts() {
+        this.http
+        .get('https://cmstestproject-4aa23-default-rtdb.firebaseio.com/contacts.json')
+        // .pipe(map(responseData => {
+        //     const array: Contact[] = [];
+        //     for (const key in responseData) {
+        //         if (responseData.hasOwnProperty(key)) {
+        //             array.push({...responseData[key], id: key});
+        //         }
+        //     }
+        //     this.contacts = array;
+        // }        ))
+        .subscribe((contacts: Contact[]) => {
+            this.setContacts(contacts);
+            this.getSorted();
+            this.contactChangedEvent.next(this.contacts.slice());
+        }
+        )
+    }
+
+    storeContacts() {
+        const contactStringed = JSON.stringify(this.contacts);
+        this.http
+        .put('https://cmstestproject-4aa23-default-rtdb.firebaseio.com/contacts.json',
+            contactStringed, {
+                headers: new HttpHeaders( {
+                    'Content-Type': 'application/json'
+                })
+        })
+        .subscribe(
+            response => 
+            {
+                // console.log('Response');
+                // console.log(response)
+            this.getSorted();
+            this.contactChangedEvent.next(this.contacts.slice())}
+        )
+    }
+
+
     
 }
 
