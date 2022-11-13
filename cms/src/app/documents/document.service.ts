@@ -181,12 +181,9 @@ export class DocumentService {
           console.log(responseData);
           this.documentChangedEvent.next(this.documents.slice());
       }, error => {
-        //Error Handling Option 2:
-      this.error.next(`Error ${error.status}: ${error.statusText} ${error.error.error}`);
-      console.log(error);
-      }); // We can include the subscribe here in the service because it doesn't care about the 
-      // response.  
-    
+        this.error.next(`Error ${error.status}: ${error.statusText} ${error.error.error}`);
+        console.log(error);
+      });     
   }
   
 }
