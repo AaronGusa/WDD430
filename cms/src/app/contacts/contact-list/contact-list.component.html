@@ -27,7 +27,7 @@
   </div>
   <div>
     <app-contact-item 
-        *ngFor="let contact of contactList | contactsFilter:term:'searchBox'"
+        *ngFor="let contact of contacts | contactsFilter:term:'searchBox'"
         [contact]="contact"
         dnd-draggable [dragEnabled]="true"
         [dragData]="contact"

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MessageService } from '../message.service';
 import { Messages } from '../message.model';
 import { ContactService } from 'src/app/contacts/contact.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-messages-list',
   templateUrl: './messages-list.component.html',
   styleUrls: ['./messages-list.component.css']
 })
-export class MessagesListComponent implements OnInit {
+export class MessagesListComponent implements OnInit, OnDestroy {
   messages: Messages[]; 
+  private messageListChange: Subscription;
   // = [
   //   new Messages(999, 'Amazon Package Delivered', 
   //   "You're package of CRAYONS has been delivered",
@@ -27,13 +29,14 @@ export class MessagesListComponent implements OnInit {
               private contactService: ContactService) { }
 
   ngOnInit() {
-    this.contactService.fetchContacts();
+    //this.messages = this.messageService.getMessages();
+    this.contactService.getContacts();
     this.messageService.messageChangedEvent.subscribe(
       (messages: Messages[]) => {
         this.messages = messages;
       }
     );
-    this.messages = this.messageService.getMessages();
+
 
     //console.log(this.messages)
   }
@@ -41,5 +44,10 @@ export class MessagesListComponent implements OnInit {
   // onAddMessage(message: Messages) {
   //   this.messages.push(message);
   // }
+  ngOnDestroy() {
+    if(this.messageListChange) {
+    this.messageListChange.unsubscribe();
+    }
+  }
 
 }
