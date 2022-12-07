@@ -1,0 +1,15 @@
+.nav-link {
+    color: rgb(161, 0, 0);
+    font-size: 2rem;
+    padding: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+nav {
+    padding: 1rem;
+        
+}
+
+.active {
+    color: rgb(172, 0, 0);
+}

@@ -1,0 +1,13 @@
+.homecards {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 30rem;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+img {
+    border-radius: 15px;
+    overflow: hidden;
+}
