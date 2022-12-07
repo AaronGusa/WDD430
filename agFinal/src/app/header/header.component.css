@@ -10,6 +10,6 @@ nav {
         
 }
 
-.active {
+.nav-link.active {
     color: rgb(172, 0, 0);
 }
