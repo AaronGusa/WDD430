@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { PersonDetailComponent } from './people/person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     ListsComponent,
     GiftsComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    PersonDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -11,3 +11,23 @@ img {
     border-radius: 15px;
     overflow: hidden;
 }
+
+.personWrap {
+    padding: 0 2rem 2rem 2rem;
+
+}
+
+.row {
+    justify-content: center;
+}
+
+.jumbotron {
+    border-radius: 55px 0 0 55px;
+    color: white;
+    background-color: rgb(41, 65, 0);
+    padding-left: 2rem;
+    margin-left: 2rem;
+    /* border: 5px solid rgba(214, 0, 0, 0.5); */
+    /* box-shadow: 1px 1px 5px rgba(0,0,0,0.5); */
+    text-shadow: 5px 5px 5px rgba(0,0,0,1);
+}
