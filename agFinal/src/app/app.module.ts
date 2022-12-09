@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { PersonDetailComponent } from './people/person-detail/person-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PersonDetailComponent } from './people/person-detail/person-detail.comp
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgMaterialModule
+    NgMaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

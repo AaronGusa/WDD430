@@ -2,13 +2,28 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="jumbotron" style="z-index: 10;">
-        <h1>People</h1>
+        <a routerLink="/people" class="h1">People</a>
+    <router-outlet></router-outlet> 
+
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
   <div class="row personWrap">
-    <a routerLink="1">
+    <div class="row" *ngFor="let person of people">
+      <a routerLink="{{ person._id }}">
+        <div class="card homecards">
+            <img src="{{ person.imageUrl }}" class="card-img-top personImage" alt="Image of {{ person.name }}"/>
+            <div class="card-body">
+            <h2 class="cardTitle">{{ person.name }}</h2>
+  
+            <p class="card-text">{{ person.bio }}</p>
+            </div>
+        </div>
+      </a>
+    </div>
+    
+
+    <!-- <a routerLink="1">
       <div class="card homecards">
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/101.webp" class="card-img-top" alt="Sunset Over the Sea"/>
           <div class="card-body">
@@ -37,6 +52,6 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
       </div>
-    </a>  
+    </a>   -->
   </div>
 </div>

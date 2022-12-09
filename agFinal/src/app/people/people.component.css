@@ -3,7 +3,7 @@
     overflow: hidden;
     width: 30rem;
     padding: 1.5rem;
-    margin: 1.5rem;
+    margin: 3rem;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
@@ -14,7 +14,6 @@ img {
 
 .personWrap {
     padding: 0 2rem 2rem 2rem;
-
 }
 
 .row {
@@ -30,4 +29,17 @@ img {
     /* border: 5px solid rgba(214, 0, 0, 0.5); */
     /* box-shadow: 1px 1px 5px rgba(0,0,0,0.5); */
     text-shadow: 5px 5px 5px rgba(0,0,0,1);
+}
+
+.personImage {
+    width: auto;
+    height: 300;
+}
+
+.card {
+    font-size: 1.875rem;
+}
+
+.cardTitle {
+    font: 37px Roboto, sans-serif;
 }
