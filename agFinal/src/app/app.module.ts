@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { PersonDetailComponent } from './people/person-detail/person-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GiftDetailComponent } from './gifts/gift-detail/gift-detail.component';
+import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     GiftsComponent,
     HomeComponent,
     FooterComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    GiftDetailComponent,
+    GiftCardComponent
   ],
   imports: [
     BrowserModule,

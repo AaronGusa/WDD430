@@ -3,10 +3,10 @@ const router = express.Router();
 //const sequenceGenerator = require('../routes/sequenceGenerator');
 const Gift = require('../models/gift');
 
-//Get Server Person List
+//Get Server Gift List
 router.get('/', (req, res, next) => {
     Gift.find()
-    .then(gifts =>{
+    .then(gifts => {
         res.status(200).json({
             message: "Gifts Gathered!",
             Gifts: gifts

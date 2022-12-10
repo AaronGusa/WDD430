@@ -1,21 +1,20 @@
 <div style="position: relative; z-index: 10;">
   <div class="row">
     <div class="col-xs-12">
-      <div class="jumbotron" style="z-index: 10;">
-        <a routerLink="/people" class="h1">People</a>
-    <router-outlet></router-outlet> 
-
+      <div class="title" style="z-index: 10;">
+        <a routerLink="/people" class="h1">Candidates</a>
+        <router-outlet></router-outlet> 
       </div>
     </div>
   </div>
   <div class="row personWrap">
-    <div class="row" *ngFor="let person of people">
-      <a routerLink="{{ person._id }}">
+    <div class="row" *ngFor="let person of personTest" [{person}]="person">
+      <a routerLink="{{ person.pNumber }}">
         <div class="card homecards">
             <img src="{{ person.imageUrl }}" class="card-img-top personImage" alt="Image of {{ person.name }}"/>
             <div class="card-body">
             <h2 class="cardTitle">{{ person.name }}</h2>
-  
+            
             <p class="card-text">{{ person.bio }}</p>
             </div>
         </div>

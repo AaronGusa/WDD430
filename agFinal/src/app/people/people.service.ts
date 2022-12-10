@@ -14,30 +14,53 @@ export class PeopleService implements OnInit {
 
   constructor( private http: HttpClient) {
     this.fetchPeople();
-    console.log('People OnConstruct');
-    console.log(this.people);
+    //console.log('People OnConstruct');
+    //console.log(this.people);
   }
 
   ngOnInit() {
     console.log('People OnInit');
     console.log(this.people);
-    this.fetchPeople();
+    if (this.people.length === 0) {
+      this.fetchPeople();
+      this.peopleChangedEvent.next(this.people.slice());
+
+    } else {
+      this.peopleChangedEvent.next(this.people.slice());
+
+    }
     console.log(this.people);
   }
 
- fetchPeople() {
-    this.http
+ async fetchPeople() {
+    await this.http
     .get<{message:string, people: People[]}>('http://localhost:3000/people')
     .subscribe((response) => {
-      this.people = response.people;
+      for (let person of response.people ) {
+        this.people.push(person);
+      };
       console.log(response.message);
-      console.log(this.people);
+      //console.log(this.people);
       this.peopleChangedEvent.next(this.people.slice());
+      //console.log('Sliced');
     });
   }
 
   getPeople() {
     return this.people.slice();
+  }
+
+  getPerson(pNumber: string) {
+    if (this.people.length === 0) {
+      this.fetchPeople();
+    } else {
+      for (let person of this.people) {
+        if (person.pNumber === pNumber) {
+          return person;
+        }
+      }
+    }
+    this.peopleChangedEvent.next(this.people.slice());
   }
 
   printPeople() {

@@ -3,6 +3,7 @@ export class People {
         public name: string,
         public imageUrl: string,
         public bio: string,
-        public wishlist: any[]
+        public wishlist: any[],
+        public pNumber: string
     ) {}
 }

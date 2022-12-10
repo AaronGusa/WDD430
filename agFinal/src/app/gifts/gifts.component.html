@@ -1,0 +1,57 @@
+<div style="position: relative; z-index: 10;">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="title" style="z-index: 10;">
+          <a routerLink="/gifts" class="h1">Gifts</a>  
+        </div>
+      </div>
+    </div>
+    
+    <div class="row giftWrap">
+      <div class="row" *ngFor="let g of gifts">
+        <a routerLink="{{ g.giftNumber }}" >
+          <div class="card giftcards">
+              <img src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+              <div class="card-body">
+                <h2 class="cardTitle">{{ g.name }}</h2>
+                
+                <p class="card-text">{{ g.desc }}</p>
+              <a href="{{ g.url }}">Go to Item</a>
+              </div>
+          </div>
+        </a>
+      </div>
+      
+  
+      <!--<a routerLink="1">
+        <div class="card homecards">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/105.webp" class="card-img-top" alt="Sunset Over the Sea"/>
+            <div class="card-body">
+            <h2>Gift 1</h2>
+  
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+      </a>  
+       <a routerLink="2">
+        <div class="card homecards">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/100.webp" class="card-img-top" alt="Sunset Over the Sea"/>
+            <div class="card-body">
+            <h2>Person 2</h2>
+  
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+      </a>  
+      <a routerLink="3">
+        <div class="card homecards">
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/099.webp" class="card-img-top" alt="Sunset Over the Sea"/>
+            <div class="card-body">
+            <h2>Person 3</h2>
+  
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+      </a>   -->
+    </div>
+  </div>

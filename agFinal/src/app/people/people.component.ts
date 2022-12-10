@@ -8,26 +8,24 @@ import { PeopleService } from './people.service';
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.css']
 })
-export class PeopleComponent implements OnInit, OnDestroy {
+export class PeopleComponent implements OnInit {
   private peopleListChange: Subscription;
-  people: People[];
+  people: People[] = [];
+  person: People;
+  personTest: any[] = [];
   
   constructor(private peopleService: PeopleService) {
-    this.peopleService.getPeople();
-    
-    this.peopleService.printPeople();
+    this.personTest = this.peopleService.people;
+    //console.log(this.personTest);
   }
 
   ngOnInit() {
+    
     this.peopleListChange = this.peopleService.peopleChangedEvent
     .subscribe((people: People[]) => {
       this.people = people;
-      console.log(this.people);
+      //console.log(this.people);
     });
-  }
-
-  ngOnDestroy() {
-    this.peopleListChange.unsubscribe();
   }
 
 }
