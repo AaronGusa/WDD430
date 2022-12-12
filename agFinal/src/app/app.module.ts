@@ -10,7 +10,7 @@ import { ListsComponent } from './lists/lists.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { PersonDetailComponent } from './people/person-detail/person-detail.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,7 @@ import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
 import { GiftResolver } from 'backend/gift-resolver.service';
 import { SanitizeHtmlDirective } from './gifts/sanitize-html.directive';
 import { PeopleListComponent } from './people/people-list/people-list.component';
+import { PersonNewComponent } from './people/person-new/person-new.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PeopleListComponent } from './people/people-list/people-list.component'
     GiftDetailComponent,
     GiftCardComponent,
     SanitizeHtmlDirective,
-    PeopleListComponent
+    PeopleListComponent,
+    PersonNewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { PeopleListComponent } from './people/people-list/people-list.component'
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [GiftResolver],
   bootstrap: [AppComponent]

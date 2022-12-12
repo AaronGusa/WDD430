@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -67,7 +68,23 @@ export class PeopleService implements OnInit {
     console.log(this.people);
   }
 
-  
+  totalPeople() {
+    return this.people.length;
+  }
+
+  addPerson(newbie: People) {
+    if(!newbie) {
+      return;
+    }
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    this.http.post<{message: String, person: People}>('http://localhost:5000/people',
+      newbie, {headers: headers})
+      .subscribe((responseData) => {
+        this.people.push(responseData.person);
+      }
+    );
+  }
 
 
 }
