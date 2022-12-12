@@ -27,31 +27,38 @@ router.get('/', (req, res, next) => {
     })
 });
 
-//Post new docs to server
-// router.post('/', (req, res, next) => {
-//     //const maxContactId = sequenceGenerator.nextId("contacts");
+//Post new person to server
+router.post('/', (req, res, next) => {
+    //const maxPersonId = sequenceGenerator.nextId("people");
 
-//     const contact = new Contact ({
-//         id: maxContactId,
-//         name: req.body.name,
-//         email: req.body.email,
-//         phone: req.body.phone,
-//         group: req.body.group //this is an array and need additional attention
-//     });
-//     contact.save()
-//         .then(createdContact => {
-//         res.status(201).json({
-//             message: 'Contact added successfully',
-//             contact: createdContact
-//         });
-//         })
-//         .catch(error => {
-//             res.status(500).json({
-//             message: 'An error occurred',
-//             error: error
-//         });
-//     });
-// });
+    const person = new Person ({
+        //id: maxPersonId,
+        name: req.body.name,
+        imageUrl: req.body.imageUrl,
+        bio: req.body.bio,
+        wishlist: req.body.wishlist, //this is an array and need additional attention
+        pNumber: req.body.pNumber
+        
+    });
+
+    console.log('People.js Server Post');
+    console.log(person.imageUrl);
+    console.log(person.pNumber);
+
+    person.save()
+        .then(createdPerson => {
+        res.status(201).json({
+            message: 'Person added successfully',
+            people: createdPerson
+        });
+        })
+        .catch(error => {
+            res.status(500).json({
+            message: 'An error occurred',
+            error: error
+        });
+    });
+});
 
 // router.put('/:id', (req, res, next) => {
 //     Contact.findOne({ id: req.params.id })

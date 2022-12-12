@@ -12,7 +12,6 @@
                 size="120"
                 max="120"
                 name="name"
-                
                 [ngModel]="person?.name"
                 #name="ngModel"
                 required>
@@ -31,10 +30,10 @@
                 id="imageUrl"
                 class="form-control required requiredInput"
                 size="150"
-                max="255"
+                max="1000"
                 name="imageUrl"
                 [ngModel]="person?.imageUrl"
-                #imgUrl="ngModel"
+                #imageUrl="ngModel"
                 required>
             </div>
           </div>

@@ -9,7 +9,7 @@ import { PeopleService } from './people.service';
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.css']
 })
-export class PeopleComponent implements OnInit {
+export class PeopleComponent implements OnInit, OnDestroy {
   private peopleListChange: Subscription;
   people: People[] = [];
   person: People;
@@ -19,17 +19,21 @@ export class PeopleComponent implements OnInit {
   
   
   constructor(private peopleService: PeopleService) {
-    this.personTest = this.peopleService.people;
+    this.personTest = this.peopleService.people;    
     //console.log(this.personTest);
   }
 
   ngOnInit() {
-    
+    this.people = this.peopleService.getPeople();
+    // if (this.people.length === 0) {
+    // this.peopleService.fetchPeople();}
+
     this.peopleListChange = this.peopleService.peopleChangedEvent
     .subscribe((people: People[]) => {
       this.people = people;
       //console.log(this.people);
     });
+    
   }
 
   getPerson(id: string) {
@@ -42,6 +46,10 @@ export class PeopleComponent implements OnInit {
       }
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.peopleListChange.unsubscribe();
   }
 
 

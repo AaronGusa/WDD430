@@ -11,7 +11,13 @@ import { PeopleService } from '../people.service';
 })
 export class PersonNewComponent {
 person: People;
-newPerson: People;
+newPerson = {
+  name: '',
+  imageUrl: '',
+  bio: '',
+  wishlist: [],
+  pNumber: ''
+};
 numberOfPeople: number;
 
 constructor(private peopleService: PeopleService,
@@ -23,17 +29,23 @@ onSubmit(f: NgForm) {
   // submittedId = this.currentParam;
 
     this.newPerson.name = f.value.name;
-    this.newPerson.imageUrl = f.value.email;
-    this.newPerson.bio = f.value.phone;
+    this.newPerson.imageUrl = f.value.imageUrl;
+    this.newPerson.bio = f.value.bio;
     this.newPerson.wishlist = [];
     // this.newPerson.pNumber = ;
 
-    //console.log(this.newContact.group);
+    console.log(this.newPerson.imageUrl);
 
     this.numberOfPeople = this.peopleService.totalPeople();
+    //console.log('Number of People');
+    //console.log(this.numberOfPeople);
+    this.numberOfPeople = this.numberOfPeople + 1;
+    //console.log('adding one');
+    //console.log(this.numberOfPeople);
     this.newPerson.pNumber = this.numberOfPeople.toString();
+    //console.log('Being placed in function:');
+    //console.log(this.newPerson);
 
-    console.log(this.newPerson);
     this.peopleService.addPerson(this.newPerson);
 
     this.router.navigate(['./people']);

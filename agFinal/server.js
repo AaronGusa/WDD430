@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-//app.use(cookieParser());
+app.use(cookieParser());
 
-//app.use(logger('dev')); // Tell express to use the Morgan logger
+app.use(logger('dev')); // Tell express to use the Morgan logger
 
 // Add support for CORS
 app.use((req, res, next) => {

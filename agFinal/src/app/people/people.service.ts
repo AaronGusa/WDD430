@@ -9,12 +9,14 @@ import { Subject } from 'rxjs';
 })
 
 export class PeopleService implements OnInit {
+  person: People;
   people: People[] = [];
   peopleChangedEvent = new Subject<People[]>();
 
 
   constructor( private http: HttpClient) {
     this.fetchPeople();
+    this.peopleChangedEvent.next(this.people.slice());
     //console.log('People OnConstruct');
     //console.log(this.people);
   }
@@ -22,24 +24,27 @@ export class PeopleService implements OnInit {
   ngOnInit() {
     console.log('People OnInit');
     console.log(this.people);
-    if (this.people.length === 0) {
-      this.fetchPeople();
-      this.peopleChangedEvent.next(this.people.slice());
+    // if (this.people.length === 0) {
+    //   this.fetchPeople();
+    //   this.peopleChangedEvent.next(this.people.slice());
 
-    } else {
-      this.peopleChangedEvent.next(this.people.slice());
+    // } else {
+    //   this.peopleChangedEvent.next(this.people.slice());
 
-    }
+    // }
+
+    this.peopleChangedEvent.next(this.people.slice());
     console.log(this.people);
   }
 
- async fetchPeople() {
-    await this.http
+ fetchPeople() {
+    this.http
     .get<{message:string, people: People[]}>('http://localhost:5000/people')
     .subscribe((response) => {
-      for (let person of response.people ) {
-        this.people.push(person);
-      };
+      // for (let person of response.people ) {
+      //   this.people.push(person);
+      // };
+      this.people = response.people;
       console.log(response.message);
       //console.log(this.people);
       this.peopleChangedEvent.next(this.people.slice());
@@ -72,17 +77,24 @@ export class PeopleService implements OnInit {
     return this.people.length;
   }
 
-  addPerson(newbie: People) {
+  async addPerson(newbie: People) {
+    console.log('Newbie:')
+    console.log(newbie.imageUrl);
+    console.log(newbie.pNumber);
+
     if(!newbie) {
       return;
     }
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-    this.http.post<{message: String, person: People}>('http://localhost:5000/people',
+    await this.http.post<{message: String, person: People}>('http://localhost:5000/people',
       newbie, {headers: headers})
       .subscribe((responseData) => {
+        console.log(responseData.message)
         this.people.push(responseData.person);
-      }
+        //this.fetchPeople();
+        
+      } 
     );
   }
 
