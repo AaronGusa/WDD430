@@ -67,5 +67,7 @@ export class PeopleService implements OnInit {
     console.log(this.people);
   }
 
+  
+
 
 }

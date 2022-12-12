@@ -1,0 +1,15 @@
+<div class="row personWrap">
+    <div class="row" *ngFor="let person of people" [{person}]="person">
+      <a routerLink="{{ person.pNumber }}" 
+      >
+        <div class="card homecards" routerLinkActive="active" (click)="onScrollToTop()">
+            <img src="{{ person.imageUrl }}" class="card-img-top personImage" alt="Image of {{ person.name }}"/>
+            <div class="card-body">
+            <h2 class="cardTitle">{{ person.name }}</h2>
+            
+            <p class="card-text">{{ person.bio }}</p>
+            </div>
+        </div>
+      </a>
+    </div>
+</div>

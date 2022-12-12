@@ -1,3 +1,13 @@
+.detailHeader {
+    display: flex;
+    align-items: center;
+
+}
+
+.detailName{
+    font-size: 7rem;
+}
+
 .personDetailImage {
     width: 150px;
     height: 100px;

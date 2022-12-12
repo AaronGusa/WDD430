@@ -2,12 +2,25 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="title" style="z-index: 10;">
-        <a routerLink="/people" class="h1">Candidates</a>
-        <router-outlet></router-outlet> 
+        <a routerLink="/people" class="h1">Giftees</a>
       </div>
     </div>
   </div>
-  <div class="row personWrap">
+<div class="">
+  <div class="col-md-7">
+    <div class="row personWrap">
+      <app-people-list
+      [people]="people"
+      ></app-people-list>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <router-outlet></router-outlet> 
+  </div>  
+</div>
+
+
+  <!-- <div class="row personWrap">
     <div class="row" *ngFor="let person of personTest" [{person}]="person">
       <a routerLink="{{ person.pNumber }}">
         <div class="card homecards">
@@ -22,7 +35,7 @@
     </div>
     
 
-    <!-- <a routerLink="1">
+    <a routerLink="1">
       <div class="card homecards">
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/people/101.webp" class="card-img-top" alt="Sunset Over the Sea"/>
           <div class="card-body">
@@ -51,6 +64,7 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
       </div>
-    </a>   -->
-  </div>
+    </a> 
+  </div> -->
+
 </div>

@@ -18,6 +18,7 @@ import { GiftDetailComponent } from './gifts/gift-detail/gift-detail.component';
 import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
 import { GiftResolver } from 'backend/gift-resolver.service';
 import { SanitizeHtmlDirective } from './gifts/sanitize-html.directive';
+import { PeopleListComponent } from './people/people-list/people-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SanitizeHtmlDirective } from './gifts/sanitize-html.directive';
     PersonDetailComponent,
     GiftDetailComponent,
     GiftCardComponent,
-    SanitizeHtmlDirective
+    SanitizeHtmlDirective,
+    PeopleListComponent
   ],
   imports: [
     BrowserModule,

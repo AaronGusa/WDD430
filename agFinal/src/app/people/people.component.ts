@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { People } from './people.model';
 import { PeopleService } from './people.service';
 
+
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
@@ -14,6 +15,8 @@ export class PeopleComponent implements OnInit {
   person: People;
   personTest: People[] = [];
   personSelected: boolean = false;
+
+  
   
   constructor(private peopleService: PeopleService) {
     this.personTest = this.peopleService.people;
@@ -40,5 +43,6 @@ export class PeopleComponent implements OnInit {
     }
 
   }
+
 
 }

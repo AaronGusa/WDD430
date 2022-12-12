@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { People } from '../people.model';
 import { PeopleService } from '../people.service';
 
+
 @Component({
   selector: 'app-person-detail',
   templateUrl: './person-detail.component.html',
