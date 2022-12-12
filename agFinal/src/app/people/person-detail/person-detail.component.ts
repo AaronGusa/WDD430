@@ -40,6 +40,12 @@ export class PersonDetailComponent implements OnInit {
     )
   }
 
+  onDelete() {
+    this.peopleService.deletePerson(this.person);
+    //this.peopleService.fetchPeople();
+    this.peopleService.peopleChangedEvent.next(this.peopleService.people.slice());
+    this.router.navigate(['./people']);
 
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { People } from './people.model';
 import { PeopleService } from './people.service';
 
@@ -10,11 +10,14 @@ import { PeopleService } from './people.service';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit, OnDestroy {
-  private peopleListChange: Subscription;
+  private peopleList: Subscription;
+  peopleListChange = new Subject<People[]>();
+
   people: People[] = [];
   person: People;
   personTest: People[] = [];
   personSelected: boolean = false;
+  http: any;
 
   
   
@@ -28,7 +31,7 @@ export class PeopleComponent implements OnInit, OnDestroy {
     // if (this.people.length === 0) {
     // this.peopleService.fetchPeople();}
 
-    this.peopleListChange = this.peopleService.peopleChangedEvent
+    this.peopleList = this.peopleService.peopleChangedEvent
     .subscribe((people: People[]) => {
       this.people = people;
       //console.log(this.people);
@@ -49,8 +52,10 @@ export class PeopleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.peopleListChange.unsubscribe();
+    this.peopleList.unsubscribe();
   }
+
+ 
 
 
 }

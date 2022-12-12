@@ -89,28 +89,29 @@ router.post('/', (req, res, next) => {
 //     });
 // });
 
-// router.delete("/:id", (req, res, next) => {
-//     Contact.findOne({ id: req.params.id })
-//         .then(contact => {
-//         Contact.deleteOne({ id: req.params.id })
-//             .then(result => {
-//             res.status(204).json({
-//                 message: "Contact deleted successfully"
-//             });
-//             })
-//             .catch(error => {
-//                 res.status(500).json({
-//                 message: 'An error occurred',
-//                 error: error
-//             });
-//             })
-//         })
-//         .catch(error => {
-//         res.status(500).json({
-//             message: '500: Message not found.',
-//             error: { message: 'Message not found'}
-//         });
-//     });
-// });
+router.delete("/:id", (req, res, next) => {
+
+    Person.findOne({ pNumber: req.params.id })
+        .then(person => {
+            Person.deleteOne({ pNumber: req.params.id })
+            .then(result => {
+            res.status(204).json({
+                message: "Contact deleted successfully"
+            });
+            })
+            .catch(error => {
+                res.status(500).json({
+                message: 'An error occurred',
+                error: error
+            });
+            })
+        })
+        .catch(error => {
+        res.status(500).json({
+            message: '500: Message not found.',
+            error: { message: 'Message not found'}
+        });
+    });
+});
 
 module.exports = router; 

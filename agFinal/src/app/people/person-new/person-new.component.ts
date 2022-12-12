@@ -47,6 +47,9 @@ onSubmit(f: NgForm) {
     //console.log(this.newPerson);
 
     this.peopleService.addPerson(this.newPerson);
+    this.peopleService.fetchPeople();
+
+    this.peopleService.peopleChangedEvent.next(this.peopleService.people.slice());
 
     this.router.navigate(['./people']);
   }
@@ -54,5 +57,6 @@ onSubmit(f: NgForm) {
   onCancel() {
     this.router.navigate(['./people']);
   }
+
     
 }

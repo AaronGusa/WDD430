@@ -1,26 +1,68 @@
+.detailBacking {
+    background-color: rgba(250, 235, 215, 0.75);
+    border-radius:  25px;
+    margin: 0;
+    padding: 3rem;
+    padding-top: 1rem;
+    box-shadow: 1px 1px 14px rgb(0, 44, 20, 0.75);
+}
+
+.detailDelete {
+    display: flex;
+    justify-content: right;
+}
+
 .detailHeader {
     display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.detailNameHead {
+    display: flex;
+    justify-content: center;
     align-items: center;
 
 }
 
-.detailName{
-    font-size: 7rem;
+.personDetailImage {
+    position: relative;
+
+    width: 100%;
+    height: 250px;
+    border-radius: 25px;
+    border: 2px solid rgb(218, 165, 32);
+    padding: 0;
+    margin: 1rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* margin-left: 3rem; */
 }
 
-.personDetailImage {
-    width: 150px;
-    height: 100px;
-    border-radius: 55px;
-    border: 2px solid goldenrod;
-    padding: 0;
-    margin: 01rem;
-    overflow: hidden;
-    margin-left: 3rem;
+.detailName{
+    z-index: 10;
+    font-size: 7rem;
+    letter-spacing: 2rem;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    background-color: rgba(218, 165, 32, 0.5);
+
 }
+
 
 .detailImage {
-    width: 150px;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    position: absolute;
 }
 
 .detailCard {
@@ -48,4 +90,9 @@
 
 .purchased p {
     color: white;
+}
+
+.detailDeleteButton:hover {
+
+    background-color: #d9534f;
 }

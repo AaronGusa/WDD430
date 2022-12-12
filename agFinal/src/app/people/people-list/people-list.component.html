@@ -3,7 +3,9 @@
       <a routerLink="{{ person.pNumber }}" 
       >
         <div class="card homecards" routerLinkActive="active" (click)="onScrollToTop()">
-            <img src="{{ person.imageUrl }}" class="card-img-top personImage" alt="Image of {{ person.name }}"/>
+            <div class="imgBox">
+              <img src="{{ person.imageUrl }}" class="card-img-top personImage" alt="Image of {{ person.name }}"/>
+            </div>
             <div class="card-body">
             <h2 class="cardTitle">{{ person.name }}</h2>
             

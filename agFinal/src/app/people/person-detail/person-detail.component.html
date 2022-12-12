@@ -1,24 +1,31 @@
-<div class="row detailHeader">
-    <div class="personDetailImage">
-        <img class="detailImage" src="{{ person.imageUrl }}" alt="">
-        
+<div class="detailBacking">
+    <div class="detailDelete">
+        <a class="btn btn-danger detailDeleteButton" (click)="onDelete()">❄️</a>
+    </div>    
+    <div class="row detailHeader">
+        <div class="personDetailImage">
+            <img class="detailImage" src="{{ person.imageUrl }}" alt="">
+            <h1 class="detailName">{{person.name}}</h1>
+        </div>
+        <!-- <div class="detailNameHead"> 
+            <h1 class="detailName">{{person.name}}</h1>
+        </div> -->
     </div>
-    <h1 class="detailName">{{person.name}}</h1>
-</div>
-<div class="row col-xs-12">
-    <h2>Wish List:</h2>
-    <div class="wishlist" *ngFor="let wish of person.wishlist">
-        <div class="card detailCard">
-            <img src="{{ wish.link }}" alt="wish.link" >
-            <h3 class="wishName">{{ wish.name }}</h3>
-            <div *ngIf="wish.bought">
-                <div class="purchased">
-                    <!-- <a class="btn btn-raised-success">Purchased</a> -->
-                    <p>Purchased</p>
+    <div class="row col-xs-12">
+        <h2>Wish List:</h2>
+        <div class="wishlist" *ngFor="let wish of person.wishlist">
+            <div class="card detailCard">
+                <img src="{{ wish.link }}" alt="wish.link" >
+                <h3 class="wishName">{{ wish.name }}</h3>
+                <div *ngIf="wish.bought">
+                    <div class="purchased">
+                        <!-- <a class="btn btn-raised-success">Purchased</a> -->
+                        <p>Purchased</p>
+                    </div>
                 </div>
-            </div>
-            <div *ngIf="!wish.bought">
-                <a class="btn btn-raised-danger">Bought</a>
+                <div *ngIf="!wish.bought">
+                    <a class="btn btn-raised-danger">Bought</a>
+                </div>
             </div>
         </div>
     </div>

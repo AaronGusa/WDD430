@@ -47,7 +47,7 @@ export class PeopleService implements OnInit {
       this.people = response.people;
       console.log(response.message);
       //console.log(this.people);
-      this.peopleChangedEvent.next(this.people.slice());
+      this.peopleChangedEvent.next([...this.people]);
       //console.log('Sliced');
     });
   }
@@ -77,26 +77,39 @@ export class PeopleService implements OnInit {
     return this.people.length;
   }
 
-  async addPerson(newbie: People) {
-    console.log('Newbie:')
-    console.log(newbie.imageUrl);
-    console.log(newbie.pNumber);
-
+  addPerson(newbie: People) {
+    
     if(!newbie) {
       return;
     }
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    //const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-    await this.http.post<{message: String, person: People}>('http://localhost:5000/people',
-      newbie, {headers: headers})
+    this.http.post<{message: String, person: People}>('http://localhost:5000/people',
+      newbie)//, {headers: headers})
       .subscribe((responseData) => {
         console.log(responseData.message)
-        this.people.push(responseData.person);
+        this.people.push(newbie);
+        this.peopleChangedEvent.next([...this.people]);
         //this.fetchPeople();
         
       } 
     );
   }
 
+  deletePerson(person: People) {
+    if (!person) {
+      return;
+    }
+    console.log('Delete:')
+    console.log(person.pNumber);
+    this.http.delete('http://localhost:5000/people/' + person.pNumber)
+    .subscribe((response: Response) => {
+      //console.log(response);
+      const updatedPeople = this.people.filter(p => p.pNumber !== person.pNumber)
+      console.log(updatedPeople);
+      this.people = updatedPeople;
+      this.peopleChangedEvent.next([...this.people]);
+    })
+  }
 
 }

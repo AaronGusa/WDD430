@@ -25,7 +25,7 @@ export class GiftsComponent implements OnInit {
     this.giftListChanged = this.gService.giftsChangedEvent
     .subscribe((gifts: Gifts[]) => {
       this.gifts = gifts;
-      console.log(this.gifts);
+      //console.log(this.gifts);
     });
   }
 
