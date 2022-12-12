@@ -2,6 +2,7 @@ import { Gifts } from './gift.model';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -10,9 +11,11 @@ import { Subject } from 'rxjs';
 export class GiftsService implements OnInit {
   gifts: Gifts[] = [];
   giftsChangedEvent = new Subject<Gifts[]>();
+  giftsTested: Gifts[];
 
-
-  constructor( private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.fetchGifts();
     this.giftsChangedEvent.next(this.gifts.slice());
 
@@ -21,6 +24,12 @@ export class GiftsService implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data
+    .subscribe(
+      (data: Data) => {
+        this.gifts = data['Gifter'];
+      }
+    )
     //console.log('Gift OnInit');
     //console.log(this.gifts.length);
     //this.fetchGifts();
@@ -36,20 +45,21 @@ export class GiftsService implements OnInit {
     // console.log(this.gifts);
   }
 
- async fetchGifts() {
-    await this.http
-    .get<{message:string, Gifts: Gifts[]}>('http://localhost:3000/gifts')
+ fetchGifts() {
+    this.http
+    .get<{message:string, Gifts: Gifts[]}>('http://localhost:5000/gifts')
     .subscribe((response) => {
-      
-      //console.log(response.message);
       this.gifts = response.Gifts;
+      console.log(response.message);
+      this.giftsChangedEvent.next(this.gifts.slice());
       //console.log(this.gifts);
     });
-    this.giftsChangedEvent.next(this.gifts.slice());
+    
     //console.log(this.gifts);
   }
 
   getGifts() {
+    
     return this.gifts.slice();
   }
 
