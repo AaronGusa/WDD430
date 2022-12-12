@@ -34,7 +34,7 @@ export class PeopleService implements OnInit {
 
  async fetchPeople() {
     await this.http
-    .get<{message:string, people: People[]}>('http://localhost:3000/people')
+    .get<{message:string, people: People[]}>('http://localhost:5000/people')
     .subscribe((response) => {
       for (let person of response.people ) {
         this.people.push(person);

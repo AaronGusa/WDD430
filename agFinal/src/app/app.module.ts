@@ -16,6 +16,8 @@ import { PersonDetailComponent } from './people/person-detail/person-detail.comp
 import { HttpClientModule } from '@angular/common/http';
 import { GiftDetailComponent } from './gifts/gift-detail/gift-detail.component';
 import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
+import { GiftResolver } from 'backend/gift-resolver.service';
+import { SanitizeHtmlDirective } from './gifts/sanitize-html.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
     FooterComponent,
     PersonDetailComponent,
     GiftDetailComponent,
-    GiftCardComponent
+    GiftCardComponent,
+    SanitizeHtmlDirective
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { GiftCardComponent } from './gifts/gift-card/gift-card.component';
     NgMaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GiftResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

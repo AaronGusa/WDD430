@@ -11,7 +11,7 @@
       <div class="row" *ngFor="let g of gifts">
         <a routerLink="{{ g.giftNumber }}" >
           <div class="card giftcards">
-              <img src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+              <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
               <div class="card-body">
                 <h2 class="cardTitle">{{ g.name }}</h2>
                 

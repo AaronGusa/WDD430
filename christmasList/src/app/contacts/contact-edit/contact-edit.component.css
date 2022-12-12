@@ -1,0 +1,54 @@
+
+input {
+  border-radius: 15px;
+}
+
+.required.ng-invalid {
+  border: 1px solid red;
+}
+
+.invalid.ng-invalid.ng-dirty {
+  border: 1px solid red;
+  background-color: rgba(179, 74, 74, 0.25);
+  
+}
+
+input.ng-valid.ng-touched {
+  border-right: 5px solid green;
+  border-bottom: 2px solid green;
+  background-color: rgba(144, 238, 144, 0.25);
+
+}
+
+input.ng-dirty.ng-valid.ng-touched {
+  border-right: 5px solid green;
+  border-bottom: 2px solid green;
+  background-color: rgba(144, 238, 144, 0.25);
+
+}
+
+
+.pad-left-right{
+  padding-left:.1rem;
+}
+
+.deleteButton {
+  margin-top: 1.5rem;
+  margin-left: -1.2rem;
+  width: 3.4rem;
+}
+
+.buttonDiv {
+  margin-top: 1.5rem;
+}
+
+.groupDiv {
+  min-height: 6rem;
+  border: solid thin lightgrey;
+}
+
+.dragMsg {
+  font-size: 2rem;
+  color: darkgrey;
+  margin-left: 3rem;
+}

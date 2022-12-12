@@ -12,7 +12,8 @@ export class PeopleComponent implements OnInit {
   private peopleListChange: Subscription;
   people: People[] = [];
   person: People;
-  personTest: any[] = [];
+  personTest: People[] = [];
+  personSelected: boolean = false;
   
   constructor(private peopleService: PeopleService) {
     this.personTest = this.peopleService.people;
@@ -26,6 +27,18 @@ export class PeopleComponent implements OnInit {
       this.people = people;
       //console.log(this.people);
     });
+  }
+
+  getPerson(id: string) {
+    for (let person of this.people) {
+      if (person.pNumber === id) {
+        this.personSelected = true;
+        return person;
+      } else {
+        console.log('No Match');
+      }
+    }
+
   }
 
 }
