@@ -13,6 +13,17 @@ export class GiftDetailComponent implements OnInit{
   gift: Gifts;
   giftsSlice: Gifts[];
   giftNumber: number;
+  category: Array<any> = [
+    {1: "Books"},
+    {2: "Clothing"},
+    {3: "Electronics"},
+    {4: "Games"},
+    {5: "Toys"},
+    {6: "Misc"}
+  ];
+  listsArray: any[] = [
+    
+  ];
 
   constructor(private gService: GiftsService,
               private router: Router,
@@ -30,11 +41,12 @@ export class GiftDetailComponent implements OnInit{
         console.log(this.gift);
       }
     )
+    console.log(this.gift);
   }
 
-  getGift(giftNumber: number) {
+  getGift(id: number) {
     for (let gift of this.giftsSlice) {
-      if (gift.giftNumber === giftNumber) {
+      if (gift.giftNumber === id) {
           return gift;
     }};
   } 
