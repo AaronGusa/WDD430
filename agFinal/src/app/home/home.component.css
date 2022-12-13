@@ -2,7 +2,7 @@
     border-radius: 15px;
     overflow: hidden;
     width: 53rem;
-    height: 500px;
+    height: 550px;
     padding: 1.5rem;
     margin: 1.5rem;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
@@ -17,12 +17,17 @@ img {
 }
 
 h2 {
-    font-family: 'willow';
-    font-size: 5rem;
+    font-family: 'christmas';
+    font-size: 20rem;
+    padding: 15px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
 }
 
 p {
-    font-family: 'eve';
+    font-family: 'Christmas';
     font-size: 4rem;
     line-height: 35px;
 }

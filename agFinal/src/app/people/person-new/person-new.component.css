@@ -1,0 +1,15 @@
+label {
+    font-family: 'christmas';
+    font-size: 45px;
+    font-weight: lighter;
+}
+
+.alert {
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 100%;
+}
+
+.panel {
+    border-radius: 25px;
+}

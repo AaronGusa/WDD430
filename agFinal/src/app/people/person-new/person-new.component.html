@@ -14,6 +14,7 @@
                 name="name"
                 [ngModel]="person?.name"
                 #name="ngModel"
+                placeholder="   Enter Name"
                 required>
             </div>
             <div class="alert alert-danger" 
@@ -34,7 +35,13 @@
                 name="imageUrl"
                 [ngModel]="person?.imageUrl"
                 #imageUrl="ngModel"
+                placeholder="   Enter Image URL"
+
                 required>
+            </div>
+            <div class="alert alert-danger" 
+                *ngIf="imageUrl.touched && !imageUrl.valid">
+                <p>Please enter a link for an image.</p>
             </div>
           </div>
   
@@ -44,18 +51,24 @@
             <input
               type="text"
               id="bio"
-              class="form-control invalid"
+              class="form-control required requiredInput"
               size="150"
-              max="255"
+              max="1000"
               name="bio"
               [ngModel]="person?.bio"
               #bio="ngModel"
+              placeholder="   Enter Biography"
+              required
             >
             <!-- <div class="alert alert-danger" 
               *ngIf="phone.touched && !phone.valid">
               <p>Please enter a valid phone number.</p>
             </div> -->
           </div>
+          <div class="alert alert-danger" 
+                *ngIf="bio.touched && !bio.valid">
+                <p>Please enter a quick bio for the individual.</p>
+            </div>
         </div>
   
     
