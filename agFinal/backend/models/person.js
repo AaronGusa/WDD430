@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Gift = require('./gift');
 
 const personSchema = mongoose.Schema({
     name: { type: String, required: true},
