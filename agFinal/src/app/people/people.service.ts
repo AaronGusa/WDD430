@@ -2,6 +2,7 @@ import { People } from './people.model';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Gifts } from '../gifts/gift.model';
 
 
 @Injectable({
@@ -112,4 +113,62 @@ export class PeopleService implements OnInit {
     })
   }
 
+  updateWishlist(originalP: People, newP: People, gift: Gifts) {
+    if (!originalP || !newP || !gift) {
+      return;
+    }
+
+    const pos = this.people.findIndex(d => d.pNumber === originalP.pNumber);
+
+    if (pos < 0) {
+      return;
+    }
+
+    // set the id of the new person to the id of the old person
+    newP.pNumber = originalP.pNumber;
+    //newDocument._id = originalDocument._id;
+    //add gift to OG wishlist then set the newP wishlist to og + 
+    originalP.wishlist.push(gift);
+    newP.wishlist = originalP.wishlist;
+    console.log(newP);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    // update database
+    this.http.put('http://localhost:5000/people/' + originalP.pNumber,
+      newP, { headers: headers })
+      .subscribe(
+        (response: Response) => {
+          this.people[pos] = newP;
+        }
+      );
+  }
+
+  deleteWish(person: People, giftNumber: number) {
+    if (!person || !giftNumber) {
+      return;
+    }
+    console.log('Delete:')
+    console.log(giftNumber);
+    const ppos = this.people.findIndex(d => d.pNumber === person.pNumber);
+    const gpos = this.people[ppos].wishlist.findIndex(d => d.giftNumber === giftNumber);
+    
+    if (ppos < 0) {
+      return;
+    }
+
+    person.wishlist[gpos].pop();
+    console.log(person);
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    // update database
+    this.http.put('http://localhost:5000/people/' + person.pNumber,
+    person, { headers: headers })
+      .subscribe(
+        (response: Response) => {
+          this.people[ppos] = person;
+        }
+      );
+    }
 }
+

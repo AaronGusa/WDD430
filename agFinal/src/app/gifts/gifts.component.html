@@ -2,28 +2,41 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="title" style="z-index: 10;">
-          <a routerLink="/gifts" class="h1">Gifts</a>  
+          <a routerLink="/gifts/giftcards" class="h1">Gifts</a>  
         </div>
       </div>
     </div>
     
+ 
     <div class="row giftWrap">
       <div class="row" *ngFor="let g of gifts">
-        <a routerLink="{{ g.giftNumber }}" >
-          <div class="card giftcards">
-              <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
-              <div class="card-body">
-                <h2 class="cardTitle">{{ g.name }}</h2>
-                
-                <p class="card-text">{{ g.desc }}</p>
-              <a href="{{ g.url }}">Go to Item</a>
-              </div>
+        <div class="card giftcards">
+          <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+          <div class="card-body">
+            <h2 class="cardTitle">{{ g.name }}</h2>
+            
+            <p class="card-text">{{ g.desc }}</p>
+            <a href="{{ g.url }}">Go to Item</a>
           </div>
-        </a>
+          
+          <div style="margin: 5%;" style="justify-content:center;">
+
+            <mat-form-field class="giftDropdown" >
+              <mat-label>Select Good Boy/Girl</mat-label>
+              <mat-select (selectionChange)="onChange($event)">
+                <mat-option *ngFor="let p of people" [value]="p" [ngForm]="" >{{p.name}}</mat-option>
+              </mat-select> 
+            </mat-form-field>
+            <div class="row" style="justify-content: space-between;">
+              <button type="submit" class="btn btn-success" (click)="onSubmit(g)">Add to Wishlist </button>
+              <!-- <button type="button" class="btn btn-danger">Clear</button> -->
+            </div>  
+          </div>
+        </div>
       </div>
-      
-  
-      <!--<a routerLink="1">
+    </div>  
+   <!-- <router-outlet></router-outlet>
+      <a routerLink="1">
         <div class="card homecards">
             <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/105.webp" class="card-img-top" alt="Sunset Over the Sea"/>
             <div class="card-body">
@@ -52,6 +65,6 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
-      </a>   -->
+      </a>   
     </div>
-  </div>
+  </div>-->

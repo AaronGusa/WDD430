@@ -13,17 +13,7 @@ export class GiftDetailComponent implements OnInit{
   gift: Gifts;
   giftsSlice: Gifts[];
   giftNumber: number;
-  category: Array<any> = [
-    {1: "Books"},
-    {2: "Clothing"},
-    {3: "Electronics"},
-    {4: "Games"},
-    {5: "Toys"},
-    {6: "Misc"}
-  ];
-  listsArray: any[] = [
-    
-  ];
+  
 
   constructor(private gService: GiftsService,
               private router: Router,

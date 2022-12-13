@@ -5,6 +5,7 @@
     padding: 3rem;
     padding-top: 1rem;
     box-shadow: 1px 1px 14px rgb(0, 44, 20, 0.75);
+    width: 100%;
 }
 
 .detailDelete {
@@ -72,6 +73,7 @@
     border-radius: 25px 25px 0 0;
     overflow: hidden;
     text-align: center;
+    padding: 0.5rem;
 }
 
 .wishName {
@@ -95,4 +97,30 @@
 .detailDeleteButton:hover {
 
     background-color: #d9534f;
+}
+
+.wishWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wishlist {
+    padding: 1rem;
+    
+}
+
+.getWishLink {
+    display: flex;
+    justify-content: center;
+
+}
+
+.getWishButton {
+    font-size: 3rem;
+    background-color: rgb(0, 37, 9);
+    box-shadow: 2px 2px 15px rgba(218, 165, 32, 0.5);
+    color: white;
+    border-radius: 25px;
 }

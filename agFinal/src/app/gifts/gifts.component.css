@@ -55,3 +55,13 @@ img {
 .cardTitle {
     font: 37px Roboto, sans-serif;
 }
+
+.giftDropdown {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    color: white;
+}
+
+.mdc-text-field {
+    background-color: darkgreen;
+}

@@ -7,7 +7,7 @@ const giftSchema = mongoose.Schema({
     desc: { type: String},
     cost: { type: Number },
     image: { type: String},
-    url: { type: String },
+    url: { type: String }
 });
 
 module.exports = mongoose.model('Gift', giftSchema);

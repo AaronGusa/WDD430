@@ -1,4 +1,4 @@
-<div class="detailBacking">
+<div class="detailBacking container">
     <div class="detailDelete">
         <a class="btn btn-danger detailDeleteButton" (click)="onDelete()">❄️</a>
     </div>    
@@ -12,19 +12,30 @@
         </div> -->
     </div>
     <div class="row col-xs-12">
-        <h2>Wish List:</h2>
-        <div class="wishlist" *ngFor="let wish of person.wishlist">
-            <div class="card detailCard">
-                <img src="{{ wish.link }}" alt="wish.link" >
-                <h3 class="wishName">{{ wish.name }}</h3>
-                <div *ngIf="wish.bought">
-                    <div class="purchased">
-                        <!-- <a class="btn btn-raised-success">Purchased</a> -->
-                        <p>Purchased</p>
+        <div class="container row" *ngIf="person.wishlist.length > 0">
+            <h2>Wish List:</h2>
+        </div> 
+        <div class="container row getWishLink" *ngIf="person.wishlist.length === 0">
+            <a class="btn btn-success getWishButton" routerLink="/gifts">❄️Get Wishing!☃️</a>
+        </div> 
+        <div class="wishWrap">
+            <div class="wishlist" *ngFor="let wish of person.wishlist">
+                  
+                <div class="card detailCard">
+                    <img src="{{ wish.image }}" alt="wish.link" >
+                    <h3 class="wishName">{{ wish.name }}</h3>
+                    <!-- <div class="detailDelete">
+                        <a class="btn btn-danger detailDeleteButton" (click)="onDeleteWish(wish.giftNumber)">❄️</a>
+                    </div>  -->
+                    <!-- <div *ngIf="wish.bought">
+                        <div class="purchased">
+                            <a class="btn btn-raised-success">Purchased</a>
+                            <p>Purchased</p>
+                        </div>
                     </div>
-                </div>
-                <div *ngIf="!wish.bought">
-                    <a class="btn btn-raised-danger">Bought</a>
+                    <div *ngIf="!wish.bought">
+                        <a class="btn btn-raised-danger">Bought</a>
+                    </div> -->
                 </div>
             </div>
         </div>

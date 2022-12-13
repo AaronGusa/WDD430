@@ -21,6 +21,24 @@ export class GiftCardComponent implements OnInit {
 
   gifts: Gifts[] = [];
   gift: Gifts;
+
+  category: Array<any> = [
+    {1: "Books"},
+    {2: "Clothing"},
+    {3: "Electronics"},
+    {4: "Games"},
+    {5: "Toys"},
+    {6: "Misc"}
+  ];
+  listsArray: string[] = [
+    'bookList', 
+    'clothingList',
+    'electronicsList',
+    'gamesList',
+    'toysList',
+    'miscList'
+  ];
+
   bookList: Gifts[];
   clothingList: Gifts[];
   electronicsList: Gifts[];
@@ -45,7 +63,7 @@ export class GiftCardComponent implements OnInit {
       
       //console.log(this.gifts);
     });
-    
+
     this.bookListChanged = this.gService.bookListSub
     .subscribe((books: Gifts[]) => {
       this.bookList = books;

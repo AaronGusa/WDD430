@@ -20,6 +20,7 @@ import { GiftResolver } from 'backend/gift-resolver.service';
 import { SanitizeHtmlDirective } from './gifts/sanitize-html.directive';
 import { PeopleListComponent } from './people/people-list/people-list.component';
 import { PersonNewComponent } from './people/person-new/person-new.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PersonNewComponent } from './people/person-new/person-new.component';
     ReactiveFormsModule,
     NgMaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [GiftResolver],
   bootstrap: [AppComponent]

@@ -1,1 +1,144 @@
-<p>gift-card works!</p>
+
+    <div class="row " >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Books</h1>
+        </div>    
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of bookList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr> 
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row" >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Clothing</h1>
+        </div>
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of clothingList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr>  
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row" >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Electronics</h1>
+        </div>
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of electronicsList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr>  
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row" >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Games</h1>
+        </div>  
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of gamesList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr>  
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row" >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Toys</h1>
+        </div>
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of toysList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr>  
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row" >
+        <div class="container row sectionTitle">
+            <h1 class="giftTitle">Miscellaneous</h1>
+        </div>    
+        <div class="row giftWrap">
+            <div class="row" *ngFor="let g of miscList">
+            
+                <div class="card giftcards">
+                    <img [sanitizeHtml]="htmlTemplate" src="{{ g.image }}" class="card-img-top giftImage" alt="Image of {{ g.name }}"/>
+                    
+            
+                    <div class="card-body">
+                        <h2 class="cardTitle">{{ g.name }}</h2>
+                    
+                        <p class="card-text">{{ g.desc }}</p>
+                        <a routerLink="/gifts/{{ g.giftNumber }}" >Details</a> 
+                        <hr>  
+                        <a href="{{ g.url }}">Go OffSite to Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
