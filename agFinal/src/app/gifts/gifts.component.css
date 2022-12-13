@@ -39,12 +39,13 @@ img {
 }
 
 .h1 {
+    color:white;
     padding: 0;
     margin:0;
     text-align: center;
     align-items: center;
     font-size: 7rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'ornament', 'Arial Narrow Bold', sans-serif;
     letter-spacing: .5rem;;
 }
 
@@ -53,7 +54,20 @@ img {
 }
 
 .cardTitle {
-    font: 37px Roboto, sans-serif;
+    font-family: 'christmas', sans-serif;
+    font-size: 5rem;
+}
+
+.card-text {
+    font-family: 'garamond', serif;
+    font-size: 2.5rem;
+}
+
+.giftOut {
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    font-weight: 1000;
 }
 
 .giftDropdown {
@@ -62,6 +76,30 @@ img {
     color: white;
 }
 
+.giftSelectWrap {
+    font-family: 'garamond';
+    font-weight: bolder;
+}
+
+.giftOption {
+    color: white;
+}
+
+.giftSubButton {
+    font-size: 1.75rem;
+    font-weight: 1000;
+}
+
+
 .mdc-text-field {
     background-color: darkgreen;
+}
+
+a {
+    color: rgb(0, 44, 0);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(38, 119, 45);
 }

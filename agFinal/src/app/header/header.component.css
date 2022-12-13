@@ -13,3 +13,35 @@ nav {
 .nav-link.active {
     color: rgb(172, 0, 0);
 }
+
+h2 {
+    font-family: 'willow';
+    font-size: 5rem;
+}
+
+p {
+    font-family: 'eve';
+    font-size: 4rem;
+    line-height: 35px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a h2 {
+    color: red;
+}
+
+a p {
+    color: darkgreen;
+}
+
+.navbar-brand {
+    font-family: 'ornament', 'helvetica', sans-serif;
+    font-size: 4rem;
+}
+
+.nav-link {
+    font-family: 'coventry';
+}

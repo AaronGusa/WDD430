@@ -1,4 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'eve', "Helvetica Neue", sans-serif; }
+h1, h2, h3, h4, h5 { font-family: 'willow', "Helvetica Neue", sans-serif; }
+
+@font-face {
+    font-family: 'wonderland';
+    src: url('./assets/fonts/BeyondWonderland.ttf');
+}
+@font-face {
+    font-family: 'sparkle';
+    src: url('./assets/fonts/ChristmasSparklePersonalUse-dLal.ttf');
+}
+@font-face {
+    font-family: 'eve';
+    src: url('./assets/fonts/christmaseve.ttf');
+}
+@font-face {
+    font-family: 'christmas';
+    src: url('./assets/fonts/Miraculous&Christmas.ttf');
+}
+@font-face {
+    font-family: 'willowless';
+    src: url('./assets/fonts/KingthingsWillowless.ttf');
+}
+@font-face {
+    font-family: 'willow';
+    src: url('./assets/fonts/kingthings-willow.ttf');
+}
+@font-face {
+    font-family: 'ornament';
+    src: url('./assets/fonts/ORNAMENT.TTF');
+}
+@font-face {
+    font-family: 'harrington';
+    src: url('./assets/fonts/HARRINGT.TTF');
+}
+@font-face {
+    font-family: 'garden';
+    src: url('./assets/fonts/CoventryGardenNF.ttf');
+}

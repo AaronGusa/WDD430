@@ -57,6 +57,8 @@ img {
 
 .gifteeAdd {
    font-size: 2.5rem;
+   font-family: 'ornament', 'eve';
+   color: white;
 }
 
 .h1 {
@@ -65,8 +67,13 @@ img {
     text-align: center;
     align-items: center;
     font-size: 7rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: .5rem;;
+    font-family: 'ornament', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .5rem;
+    text-decoration: none;
+}
+
+.h1:hover {
+    color: rgb(59, 121, 53);
 }
 
 .personImage {
@@ -79,5 +86,6 @@ img {
 }
 
 .cardTitle {
-    font: 37px Roboto, sans-serif;
+    font-size: 2rem;
+    font-family: 'sparkle', sans-serif;
 }
