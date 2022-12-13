@@ -56,13 +56,13 @@ export class GiftsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit( gift: Gifts) {
-    console.log(this.changeValue);
-    console.log(gift);
+    //console.log(this.changeValue);
+    //console.log(gift);
 
     this.newPerson = this.changeValue;
     //this.changeValue.wishlist.push(gift);
-    console.log(this.changeValue);
-    console.log(this.newPerson);
+    //console.log(this.changeValue);
+    //console.log(this.newPerson);
 
     this.pService.updateWishlist(this.changeValue, this.newPerson, gift);
     this.changeValue = null;

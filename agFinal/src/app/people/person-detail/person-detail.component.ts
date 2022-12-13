@@ -47,7 +47,7 @@ export class PersonDetailComponent implements OnInit {
 
     this.activeRoute.params.subscribe(
       (params: Params) => {
-        this.pNumber = params['id'].toString();
+        this.pNumber = params['pNumber'].toString();
         this.person = this.peopleService.getPerson(this.pNumber);
       }
     )

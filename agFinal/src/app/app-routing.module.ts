@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'people', component: PeopleComponent, children: [
     {path: 'new', component: PersonNewComponent},
-    {path: ':id', component: PersonDetailComponent}
+    {path: ':pNumber', component: PersonDetailComponent}
   ]},
   //{path: 'lists', component: ListsComponent},
   {path: 'gifts', component: GiftsComponent, resolve: {Gifter: GiftResolver}, children: [

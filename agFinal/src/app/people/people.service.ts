@@ -130,7 +130,7 @@ export class PeopleService implements OnInit {
     //add gift to OG wishlist then set the newP wishlist to og + 
     originalP.wishlist.push(gift);
     newP.wishlist = originalP.wishlist;
-    console.log(newP);
+    console.log(originalP);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     // update database

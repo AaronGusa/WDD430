@@ -61,9 +61,9 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-    Person.findOne({ id: req.params.id })
+    Person.findOne({ pNumber: req.params.id })
       .then(person => {
-        console.log(req.body.wishlist);
+        console.log('router pNumber');
 
         person.name = req.body.name;
         person.imageUrl = req.body.imageUrl;
@@ -74,15 +74,15 @@ router.put('/:id', (req, res, next) => {
         // person.wishlist.push(req.body.wishlist)
 
   
-    Person.updateOne({ id: req.params.id }, person)
+    Person.updateOne({ pNumber: req.params.id }, person)
         .then(result => {
         res.status(204).json({
             message: 'Person updated successfully'
         })
         })
         .catch(error => {
-            res.status(500).json({
-            message: '500: An error occurred',
+            res.status(600).json({
+            message: '600: An error occurred',
             error: error
         });
         });
